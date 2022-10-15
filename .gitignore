@@ -1,0 +1,4 @@
+#folder for intellij idea
+/.idea/
+#folder for node models
+/node_modules/
