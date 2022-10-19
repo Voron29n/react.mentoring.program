@@ -2,3 +2,5 @@
 /.idea/
 #folder for node models
 /node_modules/
+#dolder for output files
+/dist/
