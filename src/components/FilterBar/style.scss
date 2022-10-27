@@ -1,0 +1,36 @@
+@import "~$utils/_constant.scss";
+
+.filter__bar {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+
+  width: $containerWitch;
+  padding: 0 $containerLRPadding;
+  background: $color3;
+
+  .filter__bar__container {
+    width: inherit;
+    margin: 20px 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .filter__bar__line {
+    width: inherit;
+    height: 3px;
+    margin: 0 0 25px 0;
+    background: $color4;
+
+    .filter__bar__active__line {
+      height: 3px;
+      width: 30px;
+      background: $color1;
+    }
+  }
+
+}
+
+

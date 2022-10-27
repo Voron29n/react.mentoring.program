@@ -23,9 +23,36 @@ module.exports = {
     rules: [
       // Typescript
       {
-        test: /\.(tsx|ts|js|jsx)?$/u,
+        test: /\.(tsx|ts)?$/u,
         exclude: /node_modules/u,
-        use: ['babel-loader']
+        use: ['ts-loader']
+      },
+      {
+        test: /\.(jpg|jpeg|gif|png)$/,
+        exclude: /node_modules/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              limit: 1024,
+              name: 'images/[name].[ext]'
+            }
+          }
+        ],
+        type: 'javascript/auto'
+      },
+      {
+        test: /\.(woff|woff2|eot|ttf|svg)$/,
+        exclude: /node_modules/,
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              limit: 1024,
+              name: 'fonts/[name].[ext]'
+            }
+          }
+        ]
       }
     ]
   },

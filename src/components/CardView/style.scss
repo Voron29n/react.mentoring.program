@@ -1,0 +1,34 @@
+@import '~$utils/_constant.scss';
+
+$marginCardCount: 0 0 25px 0;
+$marginCount: 0 10px 0 0;
+
+$lineHeightCount: 24px;
+$lineHeightCountText: 20px;
+$fontWeightCount: 600;
+$fontWeightCountText: 400;
+$fontSizeCount: 20px;
+$fontSizeCountText: 18px;
+
+.card__view {
+  width: $containerWitch;
+  @include containerPadding();
+
+  display: flex;
+  flex-direction: column;
+  background: $color3;
+
+  .card__count {
+    display: flex;
+    align-items: center;
+
+
+    margin: $marginCardCount;
+    @include fontBase($color5, $fontWeightCountText, $lineHeightCountText, $fontSizeCountText);
+
+    span {
+      margin: $marginCount;
+      @include fontBase($color5, $fontWeightCount, $lineHeightCount, $fontSizeCount);
+    }
+  }
+}

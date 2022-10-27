@@ -1,15 +1,13 @@
 import * as React from 'react';
 import { createRoot } from 'react-dom/client';
-import App from '$components/App.tsx';
+import App from './App';
 
-import * as styles from './style/style.scss';
+require('normalize-css');
 
-const container = document.getElementById('root');
-const root = createRoot(container);
-const { StrictMode } = React;
+const root = createRoot(document.getElementById('root') as HTMLElement);
 
 root.render(
-  <StrictMode>
-    <App style={styles} />
-  </StrictMode>
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
 );

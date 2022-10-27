@@ -1,0 +1,28 @@
+@import '~$utils/_constant.scss';
+
+$lineHeight: 20px;
+$fontWeight: 400;
+$fontSize: 16px;
+$letterSpacing: 0.888889px;
+
+.sort__bar__container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 270px;
+
+  .sort__bar__label {
+    @include fontBase(
+      $color5,
+      $fontWeight,
+      $lineHeight,
+      $fontSize,
+      $letterSpacing
+    );
+    text-transform: uppercase;
+
+    mix-blend-mode: normal;
+    opacity: 0.6;
+  }
+}
