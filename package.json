@@ -11,7 +11,7 @@
     "precommit": "lint-staged",
     "postinstall": "husky install ./config/.husky",
     "predeploy": "yarn build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "@fontsource/montserrat": "^4.5.13",
@@ -48,6 +48,7 @@
     "eslint-plugin-react": "^7.31.10",
     "eslint-watch": "^8.0.0",
     "file-loader": "^6.2.0",
+    "gh-pages": "^4.0.0",
     "html-webpack-plugin": "^5.5.0",
     "husky": "^8.0.0",
     "lint-staged": "^13.0.3",
@@ -56,6 +57,7 @@
     "postcss-loader": "^7.0.1",
     "postcss-preset-env": "^7.8.2",
     "prettier": "2.7.1",
+    "push-dir": "^0.4.1",
     "sass": "^1.55.0",
     "sass-loader": "^13.1.0",
     "style-loader": "^3.3.1",
