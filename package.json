@@ -2,7 +2,7 @@
   "name": "react.mentoring.program",
   "version": "1.0.0",
   "main": "index.js",
-  "homepage": "https://voron29n.github.io/epam.react.mentoring.program",
+  "homepage": "https://Voron29n.github.io/epam.react.mentoring.program",
   "license": "MIT",
   "private": true,
   "scripts": {
@@ -14,7 +14,6 @@
     "deploy": "gh-pages -d dist"
   },
   "dependencies": {
-    "@fontsource/montserrat": "^4.5.13",
     "@types/node": "^18.11.3",
     "@types/react": "^18.0.21",
     "@types/react-dom": "^18.0.6",
