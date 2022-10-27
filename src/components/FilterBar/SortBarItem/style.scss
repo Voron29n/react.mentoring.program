@@ -1,0 +1,18 @@
+@import '~$utils/_constant.scss';
+
+$lineHeight: 20px;
+$fontWeight: 500;
+$fontSize: 16px;
+
+.sort__bar__item {
+  width: 140px;
+  @include fontBase($color5, $fontWeight, $lineHeight, $fontSize);
+
+  &.drop__down {
+    padding: 5px 0;
+
+    &:hover {
+      background: #f65261;
+    }
+  }
+}

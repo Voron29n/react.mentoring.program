@@ -2,20 +2,27 @@
   "name": "react.mentoring.program",
   "version": "1.0.0",
   "main": "index.js",
+  "homepage": "https://voron29n.github.io/epam.react.mentoring.program",
   "license": "MIT",
   "private": true,
   "scripts": {
     "start": "cross-env NODE_ENV=development webpack serve --config config/webpack.config.dev.js",
     "build": "cross-env NODE_ENV=production webpack --config config/webpack.config.prod.js",
     "precommit": "lint-staged",
-    "postinstall": "husky install ./config/.husky"
+    "postinstall": "husky install ./config/.husky",
+    "predeploy": "yarn build",
+    "deploy": "gh-pages -d build"
   },
   "dependencies": {
+    "@fontsource/montserrat": "^4.5.13",
+    "@types/node": "^18.11.3",
     "@types/react": "^18.0.21",
     "@types/react-dom": "^18.0.6",
     "app-root-path": "^3.1.0",
+    "normalize-css": "^2.3.1",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "typescript": "^4.8.4"
   },
   "devDependencies": {
     "@babel/core": "^7.19.3",
@@ -40,6 +47,7 @@
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-react": "^7.31.10",
     "eslint-watch": "^8.0.0",
+    "file-loader": "^6.2.0",
     "html-webpack-plugin": "^5.5.0",
     "husky": "^8.0.0",
     "lint-staged": "^13.0.3",
@@ -51,7 +59,9 @@
     "sass": "^1.55.0",
     "sass-loader": "^13.1.0",
     "style-loader": "^3.3.1",
+    "ts-loader": "^9.4.1",
     "tsconfig-paths-webpack-plugin": "^4.0.0",
+    "url-loader": "^4.1.1",
     "webpack": "^5.74.0",
     "webpack-cli": "^4.10.0",
     "webpack-dev-server": "^4.11.1",

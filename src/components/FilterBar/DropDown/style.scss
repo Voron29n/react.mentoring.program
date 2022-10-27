@@ -1,0 +1,33 @@
+@import '~$utils/_constant.scss';
+
+.sort__bar__select {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  cursor: pointer;
+
+  .sort__bar__img {
+    margin-left: 13px;
+    width: 12px;
+    height: 7px;
+
+    border-radius: 1px;
+
+    &.img__flip {
+      transform: scaleY(-1);
+    }
+  }
+
+  .sort__bar__open {
+    padding: 10px 0;
+    position: absolute;
+    top: 150%;
+    width: 140px;
+
+    background: $color6;
+    box-shadow: $color2;
+
+    border-radius: 4px;
+  }
+}

@@ -1,9 +1,19 @@
 module.exports = {
   root: true,
   parser: '@typescript-eslint/parser',
-  plugins: ['@typescript-eslint', 'eslint-plugin-node', 'prettier', 'react'],
+  parserOptions: {
+    project: './tsconfig.json'
+  },
+  ignorePatterns: ['.eslintrc.js'],
+  plugins: [
+    '@typescript-eslint',
+    'eslint-plugin-node',
+    'prettier',
+    'react',
+    'import'
+  ],
   extends: [
-    'airbnb-base',
+    'airbnb-typescript',
     'prettier',
     'plugin:prettier/recommended',
     'plugin:@typescript-eslint/eslint-recommended',
@@ -12,14 +22,23 @@ module.exports = {
   rules: {
     'comma-dangle': ['error', 'never'],
     '@typescript-eslint/no-unused-vars': 'error',
-    '@typescript-eslint/no-var-requires': 0
+    '@typescript-eslint/no-var-requires': 0,
+    'import/extensions': [
+      'error',
+      'ignorePackages',
+      {
+        js: 'never',
+        jsx: 'never',
+        ts: 'never',
+        tsx: 'never'
+      }
+    ]
   },
   env: {
     es6: true,
     browser: true,
     node: true
   },
-
   globals: {
     global: false,
     Promise: false

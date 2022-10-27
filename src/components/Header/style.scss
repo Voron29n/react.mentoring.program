@@ -1,0 +1,30 @@
+@import '~$utils/_constant.scss';
+$topPadding: 20px;
+$height: 396px;
+
+.header__container {
+  width: $containerWitch;
+  height: $height;
+
+  margin: 20px 0 10px 0;
+  @include containerPadding($topPadding);
+
+  background: #000000;
+
+  display: grid;
+  grid-template-columns: 180px 1fr 180px;
+  grid-template-areas: 'a . b' 'c c c';
+  grid-template-rows: 80px 1fr;
+
+  :nth-child(1) {
+    grid-area: a;
+  }
+
+  :nth-child(2) {
+    grid-area: b;
+  }
+
+  :nth-child(3) {
+    grid-area: c;
+  }
+}
