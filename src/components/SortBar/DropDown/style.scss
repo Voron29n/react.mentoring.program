@@ -1,6 +1,6 @@
-@import '~$utils/_constant.scss';
+@import '~utils/_constant';
 
-.sort__bar__select {
+.drop__down__select {
   text-align: center;
   position: relative;
   display: flex;
@@ -8,7 +8,7 @@
   align-items: center;
   cursor: pointer;
 
-  .sort__bar__img {
+  .drop__down__img {
     margin-left: 13px;
     width: 12px;
     height: 7px;
@@ -20,7 +20,7 @@
     }
   }
 
-  .sort__bar__open {
+  .drop__down__open {
     padding: 10px 0;
     position: absolute;
     top: 150%;

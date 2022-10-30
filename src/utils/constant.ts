@@ -1,5 +1,5 @@
-import { ISortBarItem } from '$components/FilterBar/SortBarItem/SortBarItem';
-import { IGenreBarItem } from 'components/FilterBar/GenreBarItem/GenreBarItem';
+import { ISortBarItem } from 'components/SortBar/SortBarItem/SortBarItem';
+import { IGenreBarItem } from 'components/GenreBar/GenreBarItem/GenreBarItem';
 
 export const ADD_MOVE_BUTTON = {
   text: '+ add move',

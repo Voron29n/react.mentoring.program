@@ -3,16 +3,16 @@ import './style.scss';
 import {
   ISortBarItem,
   SortBarItem
-} from '$components/FilterBar/SortBarItem/SortBarItem';
-import sortBarImg from '$images/sortbar.png';
+} from 'components/SortBar/SortBarItem/SortBarItem';
+import sortBarImg from 'images/sortbar.png';
 
 interface ISortBarDropDown {
   activeSortItem: ISortBarItem;
   sortBarList: Array<ISortBarItem>;
-  selectActiveSortItem: Dispatch<any>;
+  selectActiveSortItem: Dispatch<object>;
 }
 
-const SortBarDropDown = ({
+const DropDown = ({
   activeSortItem,
   sortBarList,
   selectActiveSortItem
@@ -33,18 +33,18 @@ const SortBarDropDown = ({
 
   return (
     <div
-      className={'sort__bar__select'}
+      className={'drop__down__select'}
       onClick={() => setIsBarOpen(prevState => !prevState)}
     >
       <SortBarItem key={activeLabel} isActive={true} label={activeLabel} />
       <img
-        className={`sort__bar__img ${isBarOpen ? 'img__flip' : ''}`}
+        className={`drop__down__img ${isBarOpen ? 'img__flip' : ''}`}
         alt={isBarOpen ? 'close' : 'open'}
         src={sortBarImg}
       />
-      {isBarOpen && <div className={'sort__bar__open'}>{dropDownList}</div>}
+      {isBarOpen && <div className={'drop__down__open'}>{dropDownList}</div>}
     </div>
   );
 };
 
-export default SortBarDropDown;
+export default DropDown;

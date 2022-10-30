@@ -1,6 +1,6 @@
 import React from 'react';
 import './style.scss';
-import { CardList } from '$components/CardView/CardList/CardList';
+import { CardList } from 'components/CardView/CardList/CardList';
 import { CARD_LIST } from 'utils/constant';
 import { ICardItem } from 'components/CardView/CardItem/CardItem';
 

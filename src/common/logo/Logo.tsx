@@ -1,5 +1,5 @@
 import React from 'react';
-import logoImg from '$images/netflixroulette.png';
+import logoImg from 'images/netflixroulette.png';
 import './style.scss';
 
 const Logo = () => {

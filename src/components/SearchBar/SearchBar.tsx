@@ -1,14 +1,13 @@
 import React from 'react';
-import { Button, IButtonFontProps } from '$common/button/Button';
+import { Button } from 'common/button/Button';
 import './style.scss';
+import { SEARCH_COMPONENT } from 'utils/constant';
 
-interface ISearchProps {
-  headline: string;
-  placeholder: string;
-  button: IButtonFontProps;
-}
+const SearchBar = () => {
+  const headline = SEARCH_COMPONENT.headline;
+  const placeholder = SEARCH_COMPONENT.placeholder;
+  const button = SEARCH_COMPONENT.button;
 
-const SearchBar = ({ headline, placeholder, button }: ISearchProps) => {
   return (
     <div className={'search__container'}>
       <div className={'search__headline upper__text'}>{headline}</div>
