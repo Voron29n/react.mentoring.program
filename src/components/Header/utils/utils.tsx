@@ -11,7 +11,12 @@ const addMovie =
     setIsLightboxOpen: Dispatch<boolean>
   ) =>
   (movieItem: IMovieItem) => {
-    setMovieList((prevState: Array<IMovieItem>) => [...prevState, movieItem]);
+    setMovieList((prevState: Array<IMovieItem>) => {
+      const result = [...prevState];
+      movieItem.id = prevState.length++;
+      result.push(movieItem);
+      return result;
+    });
 
     const lightboxChildren = <Congratulations />;
 

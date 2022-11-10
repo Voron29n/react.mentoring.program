@@ -1,4 +1,4 @@
-import React, { Dispatch } from 'react';
+import React, { Dispatch, useCallback } from 'react';
 import { IMovieItem } from 'components/MovieItem/MovieItem';
 import { IDropDownItem } from 'components/DropDown/DropDownItem/DropDownItem';
 import {
@@ -21,40 +21,46 @@ const MovieList = ({
   setLightbox,
   setIsLightboxOpen
 }: IMovieList) => {
-  const deleteMovie = ({ id }: IMovieItem) => {
-    setMovieList((prevState: Array<IMovieItem>) =>
-      prevState.filter(movieItem => movieItem.id !== id)
-    );
-  };
-
-  const editMovie = (editMovieItem: IMovieItem) => {
-    setMovieList((prevState: Array<IMovieItem>) =>
-      prevState.map(movieItem =>
-        movieItem.id === editMovieItem.id ? editMovieItem : movieItem
-      )
-    );
-    setIsLightboxOpen(false);
-  };
-
-  const handleOpenLightbox = (
-    movieItem: IMovieItem,
-    lightboxType: IDropDownItem
-  ) => {
-    if (lightboxType.label === 'delete') {
-      handleDeleteAction(
-        () => deleteMovie(movieItem),
-        setLightbox,
-        setIsLightboxOpen
+  const deleteMovie = useCallback(
+    ({ id }: IMovieItem) => {
+      setMovieList((prevState: Array<IMovieItem>) =>
+        prevState.filter(movieItem => movieItem.id !== id)
       );
-    } else {
-      handleEditAction(
-        movieItem,
-        editMovieItem => editMovie(editMovieItem),
-        setLightbox,
-        setIsLightboxOpen
+    },
+    [setMovieList]
+  );
+
+  const editMovie = useCallback(
+    (editMovieItem: IMovieItem) => {
+      setMovieList((prevState: Array<IMovieItem>) =>
+        prevState.map(movieItem =>
+          movieItem.id === editMovieItem.id ? editMovieItem : movieItem
+        )
       );
-    }
-  };
+      setIsLightboxOpen(false);
+    },
+    [setIsLightboxOpen, setMovieList]
+  );
+
+  const handleOpenLightbox = useCallback(
+    (movieItem: IMovieItem, lightboxType: IDropDownItem) => {
+      if (lightboxType.label === 'delete') {
+        handleDeleteAction(
+          () => deleteMovie(movieItem),
+          setLightbox,
+          setIsLightboxOpen
+        );
+      } else {
+        handleEditAction(
+          movieItem,
+          editMovieItem => editMovie(editMovieItem),
+          setLightbox,
+          setIsLightboxOpen
+        );
+      }
+    },
+    [deleteMovie, editMovie, setIsLightboxOpen, setLightbox]
+  );
 
   return (
     <>

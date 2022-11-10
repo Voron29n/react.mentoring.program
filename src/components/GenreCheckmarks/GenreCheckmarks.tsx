@@ -3,7 +3,7 @@ import FormControl from '@mui/material/FormControl';
 import ListItemText from '@mui/material/ListItemText';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 import Checkbox from '@mui/material/Checkbox';
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -37,12 +37,17 @@ export default function GenreCheckmarks({
     setGenreName(value);
   }, [value]);
 
-  const handleChange = ({ target }: SelectChangeEvent<typeof genreName>) => {
-    const newGenreName =
-      typeof target.value === 'string' ? target.value.split(',') : target.value;
-    setGenreName(newGenreName);
-    onChange(newGenreName);
-  };
+  const handleChange = useCallback(
+    ({ target }: SelectChangeEvent<typeof genreName>) => {
+      const newGenreName =
+        typeof target.value === 'string'
+          ? target.value.split(',')
+          : target.value;
+      setGenreName(newGenreName);
+      onChange(newGenreName);
+    },
+    [onChange]
+  );
 
   return (
     <>

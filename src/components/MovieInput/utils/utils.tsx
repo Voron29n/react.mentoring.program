@@ -60,10 +60,12 @@ export const inputComponent =
           />
         );
       case MovieItemKey.RUNTIME:
+        const runtimeValue = movieItem[keyName] ? movieItem[keyName] : '';
         const runtimeProps = {
-          value: isRuntimeFocus
-            ? movieItem[keyName]
-            : prepareRuntime(movieItem[keyName]),
+          value:
+            isRuntimeFocus || !runtimeValue
+              ? runtimeValue
+              : prepareRuntime(runtimeValue),
           InputProps: isRuntimeFocus
             ? {
                 endAdornment: (
@@ -81,17 +83,23 @@ export const inputComponent =
             {...runtimeProps}
           />
         );
-      default:
-        const textFieldProps = {
-          type: keyName === MovieItemKey.DATE ? 'date' : '',
-          multiline: keyName === MovieItemKey.OVERVIEW,
-          ...commonProps
-        };
+      case MovieItemKey.DATE:
+        const dateValue = movieItem[keyName] ? movieItem[keyName] : '';
         return (
           <TextField
+            type={'date'}
             onChange={handleTextChange}
-            value={movieItem[keyName]}
-            {...textFieldProps}
+            value={dateValue}
+            {...commonProps}
+          />
+        );
+      default:
+        return (
+          <TextField
+            multiline={keyName === MovieItemKey.OVERVIEW}
+            onChange={handleTextChange}
+            value={movieItem[keyName] ? movieItem[keyName] : ''}
+            {...commonProps}
           />
         );
     }

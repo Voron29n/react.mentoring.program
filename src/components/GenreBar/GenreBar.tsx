@@ -1,4 +1,4 @@
-import React, { Dispatch, SetStateAction, useState } from 'react';
+import React, { Dispatch, SetStateAction, useCallback, useState } from 'react';
 import './style.scss';
 import { GenreBarItem } from 'components/GenreBar/GenreBarItem/GenreBarItem';
 import { GENRE_BAR } from 'utils/constant';
@@ -11,13 +11,16 @@ interface IGenreBar {
 const GenreBar = ({ activeGenre, setActiveGenre }: IGenreBar) => {
   const [activeLineStyle, setActiveLineStyle] = useState(null);
 
-  const handleClick = (target: HTMLElement, newLabel: string) => {
-    setActiveLineStyle({
-      width: target.offsetWidth,
-      marginLeft: target.offsetLeft
-    });
-    setActiveGenre({ label: newLabel });
-  };
+  const handleClick = useCallback(
+    (target: HTMLElement, newLabel: string) => {
+      setActiveLineStyle({
+        width: target.offsetWidth,
+        marginLeft: target.offsetLeft
+      });
+      setActiveGenre({ label: newLabel });
+    },
+    [setActiveGenre]
+  );
 
   const genreList = GENRE_BAR.slice(0, 5).map(({ label }) => (
     <GenreBarItem

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import { DropDown } from 'components/DropDown/DropDown';
 import { MOVIE_ACTION } from 'utils/constant';
 import movieAction from 'images/movieAction.svg';
@@ -17,6 +17,9 @@ enum MovieItemKey {
   GENRE = 'genres',
   OVERVIEW = 'overview'
 }
+
+const movieActionClass = 'actions';
+const dropDownClass = ['movie__item__drop-down', movieActionClass];
 
 interface IMovieItem {
   [key: string]: string | number | Array<string>;
@@ -42,9 +45,6 @@ const MovieItem = ({ movieItem, handleOpenLightbox }: IMovieItemProps) => {
   const [movieActions] = useState(MOVIE_ACTION);
   const [isBarOpen, setIsBarOpen] = useState(false);
 
-  const movieActionClass = 'actions';
-  const dropDownClass = ['movie__item__drop-down', movieActionClass];
-
   const handleOut = (event: React.MouseEvent) => {
     const target = event.target as HTMLElement;
     const isInnerElement =
@@ -61,10 +61,13 @@ const MovieItem = ({ movieItem, handleOpenLightbox }: IMovieItemProps) => {
     setIsBarOpen(true);
   };
 
-  const handleSelectedDropdownItem = (dropDownItem: IDropDownItem) => {
-    setIsBarOpen(true);
-    handleOpenLightbox(movieItem, dropDownItem);
-  };
+  const handleSelectedDropdownItem = useCallback(
+    (dropDownItem: IDropDownItem) => {
+      setIsBarOpen(true);
+      handleOpenLightbox(movieItem, dropDownItem);
+    },
+    [handleOpenLightbox, movieItem]
+  );
 
   const actionBar = (
     <>

@@ -1,4 +1,4 @@
-import React, { Dispatch } from 'react';
+import React, { Dispatch, useCallback } from 'react';
 import closeIcon from 'images/close.png';
 import './style.scss';
 import {
@@ -21,19 +21,22 @@ export const DropDown = ({
   setSelectedItem,
   setIsBarOpen
 }: IDropDownProps) => {
-  const handleClick = (value: IDropDownItem) => {
-    setSelectedItem(value);
+  const handleClick = useCallback(
+    (value: IDropDownItem) => {
+      setSelectedItem(value);
+      setIsBarOpen(false);
+    },
+    [setIsBarOpen, setSelectedItem]
+  );
+  const handleCloseIcon = useCallback(() => {
     setIsBarOpen(false);
-  };
-  const handleCloseIcon = () => {
-    setIsBarOpen(false);
-  };
+  }, [setIsBarOpen]);
 
   return (
     <div className={`drop__down__container ${classNames.join(' ')}`}>
       {isCloseIcon && (
         <div className={'close__icon'}>
-          <img src={closeIcon} onClick={handleCloseIcon} />
+          <img src={closeIcon} onClick={handleCloseIcon} alt="close-icon" />
         </div>
       )}
       {selectList.map(selectItem => (
