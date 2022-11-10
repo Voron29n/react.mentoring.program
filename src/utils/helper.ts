@@ -1,7 +1,59 @@
-export const upperCase = (value: string) => {
-  return value.toUpperCase();
+import { IMovieItem } from 'components/MovieItem/MovieItem';
+import { MOVIE_LIST } from './constant';
+import { IDropDownItem } from 'components/DropDown/DropDownItem/DropDownItem';
+
+export const getMovieListMockData = (): Array<IMovieItem> => {
+  return MOVIE_LIST.map(
+    ({
+      id,
+      title,
+      genres,
+      release_date,
+      vote_average,
+      poster_path,
+      runtime,
+      overview
+    }) => {
+      return {
+        id,
+        title,
+        genres,
+        runtime,
+        overview,
+        releaseDate: release_date,
+        voteAverage: vote_average,
+        posterPath: poster_path
+      };
+    }
+  );
 };
 
-export const lowerCase = (value: string) => {
-  return value.toLowerCase();
-};
+export const filterMovieList = (
+  movieList: Array<IMovieItem>,
+  { label: activeGenre }: IDropDownItem,
+  { label: activeSortType }: IDropDownItem,
+  { label: defaultActiveGenre }: IDropDownItem
+) =>
+  movieList
+    .filter(
+      (movieItem: IMovieItem) =>
+        activeGenre === defaultActiveGenre ||
+        movieItem.genres.includes(activeGenre)
+    )
+    .sort((movieItem1: IMovieItem, movieItem2: IMovieItem) => {
+      switch (activeSortType) {
+        case 'name':
+          return movieItem1.title.localeCompare(movieItem2.title);
+        case 'release date':
+          return (
+            Date.parse(movieItem2.releaseDate) -
+            Date.parse(movieItem1.releaseDate)
+          );
+        case 'rating':
+          return movieItem2.voteAverage - movieItem1.voteAverage;
+        case 'genre':
+          return movieItem2.genres.length - movieItem1.genres.length;
+        default:
+          return 0;
+      }
+    });

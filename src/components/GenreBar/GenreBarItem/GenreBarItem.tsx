@@ -1,11 +1,8 @@
 import React from 'react';
 import './style.scss';
+import { IDropDownItem } from 'components/DropDown/DropDownItem/DropDownItem';
 
-export interface IGenreBarItem {
-  label: string;
-}
-
-interface IGenreItemProps extends IGenreBarItem {
+interface IGenreItemProps extends IDropDownItem {
   isActive: boolean;
   handleClick: (target: HTMLElement) => void;
 }

@@ -1,24 +1,28 @@
-import React, { useState } from 'react';
+import React, { Dispatch, SetStateAction, useState } from 'react';
 import './style.scss';
 import { GenreBarItem } from 'components/GenreBar/GenreBarItem/GenreBarItem';
 import { GENRE_BAR } from 'utils/constant';
+import { IDropDownItem } from 'components/DropDown/DropDownItem/DropDownItem';
 
-const GenreBar = () => {
+interface IGenreBar {
+  activeGenre: IDropDownItem;
+  setActiveGenre: Dispatch<SetStateAction<IDropDownItem>>;
+}
+const GenreBar = ({ activeGenre, setActiveGenre }: IGenreBar) => {
   const [activeLineStyle, setActiveLineStyle] = useState(null);
-  const [activeGenreItem, selectActiveGenreItem] = useState(GENRE_BAR[0]);
 
   const handleClick = (target: HTMLElement, newLabel: string) => {
-    selectActiveGenreItem({ label: newLabel });
     setActiveLineStyle({
       width: target.offsetWidth,
       marginLeft: target.offsetLeft
     });
+    setActiveGenre({ label: newLabel });
   };
 
-  const genreList = GENRE_BAR.map(({ label }) => (
+  const genreList = GENRE_BAR.slice(0, 5).map(({ label }) => (
     <GenreBarItem
       label={label}
-      isActive={label === activeGenreItem?.label}
+      isActive={label === activeGenre?.label}
       key={label}
       handleClick={target => handleClick(target, label)}
     />

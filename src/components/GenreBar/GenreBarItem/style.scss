@@ -5,7 +5,8 @@ $fontWeight: 500;
 $fontSize: 16px;
 
 .genre__item {
-  @include fontBase($color5, $fontWeight, $lineHeight, $fontSize);
+  color: $color5;
+  @include fontBase( $fontWeight, $lineHeight, $fontSize);
   cursor: pointer;
 
   &.genre__active {

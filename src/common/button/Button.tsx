@@ -1,28 +1,20 @@
 import * as React from 'react';
 import './style.scss';
-import { CSSProperties } from 'react';
-
-export interface IButtonFontProps {
-  text: string;
-  isUpperCase: boolean;
-  style: CSSProperties;
-}
 
 interface IButtonProps {
-  frontData: IButtonFontProps;
+  text: string;
+  classNames?: Array<string>;
   onClick: () => void;
 }
 
-export const Button = ({ frontData, onClick }: IButtonProps) => {
-  const { text, isUpperCase, style } = frontData;
-
+export const Button = ({ text, classNames, onClick }: IButtonProps) => {
+  const containerClassNames = classNames.join(' ');
   return (
     <div
-      style={style}
       onClick={onClick}
-      className={`button__container ${isUpperCase ? 'upper__text' : ''}`}
+      className={`button__container ${containerClassNames}`}
     >
-      <div className={'button__text'}>{text}</div>
+      <div className="text">{text}</div>
     </div>
   );
 };

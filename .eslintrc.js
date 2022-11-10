@@ -8,6 +8,7 @@ module.exports = {
   plugins: [
     '@typescript-eslint',
     'eslint-plugin-node',
+    'react-hooks',
     'prettier',
     'react',
     'import'
@@ -21,6 +22,9 @@ module.exports = {
   ],
   rules: {
     'comma-dangle': ['error', 'never'],
+    '@typescript-eslint/explicit-function-return-type': 'off',
+    'react-hooks/rules-of-hooks': 'error',
+    'react-hooks/exhaustive-deps': 'warn',
     '@typescript-eslint/no-unused-vars': 'error',
     '@typescript-eslint/no-var-requires': 0,
     'import/extensions': [

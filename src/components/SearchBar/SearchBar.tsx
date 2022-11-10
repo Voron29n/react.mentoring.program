@@ -9,14 +9,10 @@ const SearchBar = () => {
   const button = SEARCH_COMPONENT.button;
 
   return (
-    <div className={'search__container'}>
-      <div className={'search__headline upper__text'}>{headline}</div>
-      <input
-        className={'search__input'}
-        type="text"
-        placeholder={placeholder}
-      />
-      <Button frontData={button} onClick={() => {}} />
+    <div className="search__container">
+      <div className="headline upper__text">{headline}</div>
+      <input className="input" type="text" placeholder={placeholder} />
+      <Button onClick={() => {}} {...button} />
     </div>
   );
 };

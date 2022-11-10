@@ -1,15 +1,28 @@
-import { ISortBarItem } from 'components/SortBar/SortBarItem/SortBarItem';
-import { IGenreBarItem } from 'components/GenreBar/GenreBarItem/GenreBarItem';
+import { IDropDownItem } from 'components/DropDown/DropDownItem/DropDownItem';
 
 export const ADD_MOVE_BUTTON = {
   text: '+ add move',
-  isUpperCase: true,
-  style: {
-    height: '46px',
-    width: '176px',
-    background: 'rgba(96, 96, 96, 0.68)',
-    color: '#f65261'
-  }
+  classNames: ['add__button', 'upper__text']
+};
+
+export const CONGRATULATIONS_ADD_MOVIE = {
+  headline: 'congratulations !',
+  text: 'The movie has been added to database successfully '
+};
+
+export const CONFIRM_BUTTON = {
+  text: 'confirm',
+  classNames: ['confirm__button', 'upper__text']
+};
+
+export const FORM_MOVIE_RESET_BUTTON = {
+  text: 'reset',
+  classNames: ['form__movie__button', 'reset__button', 'upper__text']
+};
+
+export const FORM_MOVIE_SUBMIT_BUTTON = {
+  text: 'submit',
+  classNames: ['form__movie__button', 'submit__button', 'upper__text']
 };
 
 export const SEARCH_COMPONENT = {
@@ -17,28 +30,32 @@ export const SEARCH_COMPONENT = {
   placeholder: 'What do you want to watch?',
   button: {
     text: 'search',
-    isUpperCase: true,
-    style: {
-      height: '57px',
-      width: '233px',
-      background: '#F65261',
-      color: '#FFFFFF'
-    }
+    classNames: ['search__button', 'upper__text']
   }
 };
 
+export const CONFIRM_COMPONENT = {
+  DELETE_ACTION: {
+    headline: 'Delete MOVIE',
+    confirmText: 'Are you sure you want to delete this movie?'
+  }
+};
+
+export const GENRE_LIST = [
+  'Fantasy',
+  'Adventure',
+  'Science Fiction',
+  'Drama',
+  'Romance'
+];
+
 export const GENRE_BAR = [
   { label: 'all' },
-  { label: 'Documentary' },
-  {
-    label: 'Comedy'
-  },
-  { label: 'Horror' },
-  { label: 'Crime' }
-] as Array<IGenreBarItem>;
+  ...GENRE_LIST.map(genreName => ({ label: genreName }))
+] as Array<IDropDownItem>;
 
 export const SORT_BAR = {
-  label: 'sort by',
+  labelText: 'sort by',
   list: [
     {
       label: 'release date'
@@ -48,11 +65,23 @@ export const SORT_BAR = {
     },
     {
       label: 'genre'
+    },
+    {
+      label: 'rating'
     }
-  ] as Array<ISortBarItem>
+  ] as Array<IDropDownItem>
 };
 
-export const CARD_LIST = [
+export const MOVIE_ACTION = [
+  {
+    label: 'edit'
+  },
+  {
+    label: 'delete'
+  }
+] as Array<IDropDownItem>;
+
+export const MOVIE_LIST = [
   {
     id: 337167,
     title: 'Fifty Shades Freed',
