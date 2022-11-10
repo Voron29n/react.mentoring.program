@@ -1,0 +1,40 @@
+@import '~utils/_constant.scss';
+
+$lineHeightTitle: 22px;
+$lineHeightGenre: 17px;
+$fontSizeTitle: 18px;
+$fontSizeGenre: 14px;
+$fontWeight: 500;
+
+$cardWitch: 325px;
+$cardHeight: 550px;
+
+.card__item {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 0 0 51px 0;
+  width: $cardWitch;
+  height: $cardHeight;
+
+  .card__item__info {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    @include fontBase($color5, $fontWeight, $lineHeightTitle, $fontSizeTitle);
+    mix-blend-mode: normal;
+    opacity: 0.7;
+
+    .card__item__release {
+      border: 1px solid $color5;
+      border-radius: 4px;
+      padding: 2px;
+    }
+  }
+  .card__item__genre {
+    @include fontBase($color5, $fontWeight, $lineHeightGenre, $fontSizeGenre);
+    mix-blend-mode: normal;
+    opacity: 0.5;
+  }
+}

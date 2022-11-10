@@ -1,0 +1,24 @@
+$containerWitch: 1080px;
+$containerLRPadding: 60px;
+
+$color1: #f65261;
+$color2: #E4E4E4;
+$color3: #232323;
+$color4: #555555;
+$color5: #FFFFFF;
+$color6: #888888;
+
+@mixin containerPadding($topPadding: 0) {
+  padding: $topPadding $containerLRPadding 0 $containerLRPadding;
+}
+
+@mixin fontBase($color, $fontWeight, $lineHeight, $fontSize, $letterSpacing: 0) {
+  color: $color;
+  font-family: 'Montserrat', serif;
+  font-style: normal;
+  font-weight: $fontWeight;
+  line-height: $lineHeight;
+  font-size: $fontSize;
+  letter-spacing: $letterSpacing;
+
+}
