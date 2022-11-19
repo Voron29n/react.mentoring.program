@@ -1,7 +1,7 @@
 import React, { Dispatch, SetStateAction, useCallback, useState } from 'react';
 import './style.scss';
 import { GenreBarItem } from 'components/GenreBar/GenreBarItem/GenreBarItem';
-import { GENRE_BAR } from 'utils/constant';
+import { GENRE_BAR } from 'utils/const/viewComponents';
 import { IDropDownItem } from 'components/DropDown/DropDownItem/DropDownItem';
 
 interface IGenreBar {

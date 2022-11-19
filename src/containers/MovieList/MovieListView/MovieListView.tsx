@@ -1,17 +1,22 @@
 import React from 'react';
 import './style.scss';
-import { MovieItem, IMovieItem } from 'components/MovieItem/MovieItem';
+import { IMovieItem, MovieItem } from 'components/MovieItem/MovieItem';
 import { IDropDownItem } from 'components/DropDown/DropDownItem/DropDownItem';
 
 interface IMovieListView {
   movieList: Array<IMovieItem>;
+  handleMovieDetail: (movieDetail: IMovieItem) => void;
   handleOpenLightbox: (
     movieItem: IMovieItem,
     lightboxType: IDropDownItem
   ) => void;
 }
 
-const MovieListView = ({ movieList, handleOpenLightbox }: IMovieListView) => {
+const MovieListView = ({
+  movieList,
+  handleMovieDetail,
+  handleOpenLightbox
+}: IMovieListView) => {
   return (
     <div className="movie__view">
       <div className="movie__count">
@@ -24,6 +29,7 @@ const MovieListView = ({ movieList, handleOpenLightbox }: IMovieListView) => {
               key={movieItem.id}
               movieItem={movieItem}
               handleOpenLightbox={handleOpenLightbox}
+              handleMovieDetail={handleMovieDetail}
             />
           ))}
       </div>

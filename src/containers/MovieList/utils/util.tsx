@@ -1,5 +1,5 @@
 import { Confirm } from 'components/Confirm/Confirm';
-import { CONFIRM_COMPONENT } from 'utils/constant';
+import { CONFIRM_COMPONENT } from 'utils/const/viewComponents';
 import { ILightboxProps, LightboxSize } from 'containers/Lightbox/Lightbox';
 import React, { Dispatch } from 'react';
 import MovieForm from 'containers/MovieForm/MovieForm';

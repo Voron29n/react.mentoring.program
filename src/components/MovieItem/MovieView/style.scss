@@ -1,10 +1,7 @@
-@import '~utils/_constant';
+@import '~utils/const/_constant';
 
 $lineHeightTitle: 22px;
-$lineHeightGenre: 17px;
 $fontSizeTitle: 18px;
-$fontSizeGenre: 14px;
-$fontWeight: 500;
 
 $movieWitch: 325px;
 $movieHeight: 550px;
@@ -26,7 +23,7 @@ $movieHeight: 550px;
       justify-content: space-between;
 
       color: $color5;
-      @include fontBase($fontWeight, $lineHeightTitle, $fontSizeTitle);
+      @include fontBase($fontWeightGenre, $lineHeightTitle, $fontSizeTitle);
       mix-blend-mode: normal;
       opacity: 0.7;
 
@@ -39,30 +36,26 @@ $movieHeight: 550px;
 
     .genre {
       color: $color5;
-      @include fontBase($fontWeight, $lineHeightGenre, $fontSizeGenre);
+      @include fontBase($fontWeightGenre, $lineHeightGenre, $fontSizeGenre);
       mix-blend-mode: normal;
       opacity: 0.5;
     }
-
   }
+
   .actions {
-    display: none;
+    cursor: pointer;
+    position: absolute;
+    margin: 16px 16px;
+    top: 0;
+    right: 0;
   }
 
-  &:hover {
-    .actions {
-      display: block;
-      cursor: pointer;
-      position: absolute;
-      margin: 16px 16px;
-      top: 0;
-      right: 0;
-    }
-
-    .movie__item__drop-down {
-      background: $color3;
-      width: 160px;
-      text-align: left;
-    }
+  .movie__item__drop-down {
+    background: $color3;
+    width: 160px;
+    text-align: left;
+    margin: 16px 16px;
+    top: 0;
+    right: 0;
   }
 }

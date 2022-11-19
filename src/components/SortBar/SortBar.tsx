@@ -1,6 +1,6 @@
 import React, { Dispatch, SetStateAction, useState } from 'react';
 import './style.scss';
-import { SORT_BAR } from 'utils/constant';
+import { SORT_BAR } from 'utils/const/viewComponents';
 import sortBarImg from 'images/sortbar.png';
 import { DropDown } from 'components/DropDown/DropDown';
 import { IDropDownItem } from 'components/DropDown/DropDownItem/DropDownItem';

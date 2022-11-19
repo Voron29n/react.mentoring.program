@@ -1,16 +1,9 @@
 import React, { Dispatch } from 'react';
 import { IMovieItem, MovieItemKey } from 'components/MovieItem/MovieItem';
 import GenreCheckmarks from 'components/GenreCheckmarks/GenreCheckmarks';
-import { GENRE_LIST } from 'utils/constant';
+import { GENRE_LIST } from 'utils/const/viewComponents';
 import { InputAdornment, TextField } from '@mui/material';
-
-const prepareRuntime = (movieItemElement: number) => {
-  const hours = Math.floor(movieItemElement / 60);
-  const minutes = movieItemElement % 60;
-  const hoursStr = hours > 0 ? `${hours}h` : '';
-  const minutesStr = minutes > 0 ? `${minutes}min` : '';
-  return `${hoursStr} ${minutesStr}`;
-};
+import { prepareRuntime } from 'utils/helper';
 
 const handleMovieInputTextChange =
   (onChange: Dispatch<any>) => (event: React.ChangeEvent<HTMLInputElement>) => {

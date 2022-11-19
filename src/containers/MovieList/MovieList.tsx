@@ -1,4 +1,4 @@
-import React, { Dispatch, useCallback } from 'react';
+import React, { Dispatch, SetStateAction, useCallback } from 'react';
 import { IMovieItem } from 'components/MovieItem/MovieItem';
 import { IDropDownItem } from 'components/DropDown/DropDownItem/DropDownItem';
 import {
@@ -10,7 +10,8 @@ import MovieListView from 'containers/MovieList/MovieListView/MovieListView';
 
 interface IMovieList {
   movieList: Array<IMovieItem>;
-  setMovieList: Dispatch<any>;
+  setMovieList: Dispatch<SetStateAction<Array<IMovieItem>>>;
+  setMovieDetail: Dispatch<SetStateAction<IMovieItem>>;
   setLightbox: Dispatch<ILightboxProps>;
   setIsLightboxOpen: Dispatch<boolean>;
 }
@@ -18,6 +19,7 @@ interface IMovieList {
 const MovieList = ({
   movieList,
   setMovieList,
+  setMovieDetail,
   setLightbox,
   setIsLightboxOpen
 }: IMovieList) => {
@@ -62,11 +64,19 @@ const MovieList = ({
     [deleteMovie, editMovie, setIsLightboxOpen, setLightbox]
   );
 
+  const handleMovieDetail = useCallback(
+    (movieDetail: IMovieItem) => {
+      setMovieDetail(movieDetail);
+    },
+    [setMovieDetail]
+  );
+
   return (
     <>
       <MovieListView
         movieList={movieList}
         handleOpenLightbox={handleOpenLightbox}
+        handleMovieDetail={handleMovieDetail}
       />
     </>
   );

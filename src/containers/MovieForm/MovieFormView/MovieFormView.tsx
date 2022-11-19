@@ -4,7 +4,7 @@ import { Button } from 'common/button/Button';
 import {
   FORM_MOVIE_RESET_BUTTON,
   FORM_MOVIE_SUBMIT_BUTTON
-} from 'utils/constant';
+} from 'utils/const/buttons';
 
 interface IFormMovieView {
   smallInputs: JSX.Element | JSX.Element[];

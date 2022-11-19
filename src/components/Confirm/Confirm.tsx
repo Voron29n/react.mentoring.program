@@ -1,7 +1,7 @@
 import React from 'react';
 import './style.scss';
 import { Button } from 'common/button/Button';
-import { CONFIRM_BUTTON } from 'utils/constant';
+import { CONFIRM_BUTTON } from 'utils/const/buttons';
 
 interface IConfirmFormProps {
   headline: string;

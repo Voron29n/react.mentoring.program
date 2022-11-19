@@ -1,5 +1,5 @@
 import { IMovieItem } from 'components/MovieItem/MovieItem';
-import { MOVIE_LIST } from './constant';
+import { MOVIE_LIST } from 'utils/const/moviList';
 import { IDropDownItem } from 'components/DropDown/DropDownItem/DropDownItem';
 
 export const getMovieListMockData = (): Array<IMovieItem> => {
@@ -57,3 +57,11 @@ export const filterMovieList = (
           return 0;
       }
     });
+
+export const prepareRuntime = (movieItemElement: number) => {
+  const hours = Math.floor(movieItemElement / 60);
+  const minutes = movieItemElement % 60;
+  const hoursStr = hours > 0 ? `${hours}h` : '';
+  const minutesStr = minutes > 0 ? `${minutes}min` : '';
+  return `${hoursStr} ${minutesStr}`;
+};

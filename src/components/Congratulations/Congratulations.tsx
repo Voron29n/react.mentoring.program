@@ -1,6 +1,6 @@
 import React from 'react';
 import './style.scss';
-import { CONGRATULATIONS_ADD_MOVIE } from 'utils/constant';
+import { CONGRATULATIONS_ADD_MOVIE } from 'utils/const/buttons';
 import congratulationsIcon from 'images/congratulations.svg';
 
 const Congratulations = () => {
