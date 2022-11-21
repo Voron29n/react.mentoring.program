@@ -12,6 +12,6 @@ $fontSize: 16px;
   @include fontBase($fontWeight, $lineHeight, $fontSize);
 
   &:hover {
-    background: #f65261;
+    background: $color1;
   }
 }

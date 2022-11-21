@@ -1,4 +1,4 @@
-import { IDropDownItem } from 'components/DropDown/DropDownItem/DropDownItem';
+import { IDropDownItem } from 'components';
 
 export const SEARCH_COMPONENT = {
   headline: 'find you movie',

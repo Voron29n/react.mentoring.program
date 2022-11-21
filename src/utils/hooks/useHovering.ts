@@ -1,6 +1,6 @@
 import { RefObject, useEffect, useState } from 'react';
 
-export default function useHovering(ref: RefObject<HTMLDivElement>) {
+export const useHovering = (ref: RefObject<HTMLDivElement>) => {
   const [isHovering, setHovering] = useState<boolean>(false);
 
   const on: () => void = () => setHovering(true);
@@ -25,4 +25,4 @@ export default function useHovering(ref: RefObject<HTMLDivElement>) {
   }, [ref]);
 
   return isHovering;
-}
+};

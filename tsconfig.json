@@ -13,11 +13,11 @@
     "baseUrl": ".",
     "paths": {
       "*": ["src/*"],
-      "utils/*": ["src/utils/*"],
+      "images/*": ["public/images/*"],
       "common/*": ["src/common/*"],
       "components/*": ["src/components/*"],
       "containers/*": ["src/containers/*"],
-      "images/*": ["public/images/*"]
+      "utils/*": ["src/utils/*"]
     }
   },
   "include": ["./src/**/*"],

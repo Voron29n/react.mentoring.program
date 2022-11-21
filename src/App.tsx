@@ -1,20 +1,24 @@
 import React, { useMemo, useState } from 'react';
-import FilterBar from 'containers/FilterBar/FilterBar';
-import Footer from 'components/Footer/Footer';
-import MovieListErrorBoundary from 'components/ErrorBoundaries/MovieListErrorBoundary';
-import GenreBar from 'components/GenreBar/GenreBar';
-import SortBar from 'components/SortBar/SortBar';
-import { ILightboxProps, Lightbox } from 'containers/Lightbox/Lightbox';
-import './style.scss';
-import MovieList from 'containers/MovieList/MovieList';
+import {
+  ErrorBoundary,
+  Footer,
+  GenreBar,
+  IDropDownItem,
+  IMovieItem,
+  SortBar
+} from 'components';
+import {
+  FilterBar,
+  Header,
+  ILightboxProps,
+  Lightbox,
+  MovieList
+} from 'containers';
+import { GENRE_BAR, SORT_BAR } from 'utils/const';
+import { filterMovieList, getMovieListMockData } from 'utils/helpers';
 import { AdapterMoment } from '@mui/x-date-pickers/AdapterMoment';
 import { LocalizationProvider } from '@mui/x-date-pickers';
-import { filterMovieList, getMovieListMockData } from 'utils/helper';
-import { GENRE_BAR, SORT_BAR } from 'utils/const/viewComponents';
-import { IDropDownItem } from 'components/DropDown/DropDownItem/DropDownItem';
-import LightboxErrorBoundary from 'components/ErrorBoundaries/LightboxErrorBoundary';
-import { IMovieItem } from 'components/MovieItem/MovieItem';
-import Header from 'containers/Header/Header';
+import './style.scss';
 
 const DEFAULT_GENRE_BAR = GENRE_BAR[0];
 const DEFAULT_SORT_TYPE = SORT_BAR.list[0];
@@ -51,7 +55,7 @@ const App = () => {
           setLightbox={setLightbox}
           setIsLightboxOpen={setIsLightboxOpen}
         />
-        <MovieListErrorBoundary>
+        <ErrorBoundary>
           <FilterBar>
             <GenreBar
               activeGenre={activeGenre}
@@ -69,12 +73,12 @@ const App = () => {
             setIsLightboxOpen={setIsLightboxOpen}
             setMovieDetail={setMovieDetail}
           />
-        </MovieListErrorBoundary>
+        </ErrorBoundary>
         <Footer />
         {isLightboxOpen && lightbox && (
-          <LightboxErrorBoundary>
+          <ErrorBoundary>
             <Lightbox {...lightbox} setLightboxOpen={setIsLightboxOpen} />
-          </LightboxErrorBoundary>
+          </ErrorBoundary>
         )}
       </LocalizationProvider>
     </>
