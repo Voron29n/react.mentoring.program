@@ -1,7 +1,7 @@
 import React, { useCallback, useState } from 'react';
 import { IMovieItem, MovieInput, MovieInputSize } from 'components';
 import { MovieFormView } from 'containers';
-import { MOVIE_FORM } from 'utils/const';
+import { MOVIE_FORM } from 'common/const';
 
 interface IMovieForm {
   headline: string;

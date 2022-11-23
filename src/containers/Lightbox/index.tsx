@@ -30,10 +30,10 @@ const Lightbox = ({
   };
 
   return (
-    <div className={'lightbox__container'}>
+    <div className='lightbox__container'>
       <div className={`window ${lightboxSize}`}>
-        <div className={'content'}>{children}</div>
-        <IoClose className={'close__container'} onClick={handleClose} />
+        <div className='content'>{children}</div>
+        <IoClose className='close__container' onClick={handleClose} />
       </div>
     </div>
   );

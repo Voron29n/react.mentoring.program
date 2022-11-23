@@ -1,6 +1,6 @@
 import React, { Dispatch, SetStateAction, useCallback, useState } from 'react';
 import { GenreBarItem, IDropDownItem } from 'components';
-import { GENRE_BAR } from 'utils/const';
+import { GENRE_BAR } from 'common/const';
 import './style.scss';
 
 interface IGenreBar {
@@ -33,11 +33,11 @@ export const GenreBar = ({ activeGenre, setActiveGenre }: IGenreBar) => {
 
   return (
     <>
-      <ul className={'genre__list'}>{genreList}</ul>
-      <div className={'filter__bar__line'}>
+      <ul className='genre__list'>{genreList}</ul>
+      <div className='filter__bar__line'>
         <div
           style={activeLineStyle}
-          className={'filter__bar__active__line'}
+          className='filter__bar__active__line'
         ></div>
       </div>
     </>

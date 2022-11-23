@@ -1,7 +1,7 @@
 import React, { Dispatch } from 'react';
 import { GenreCheckmarks, IMovieItem, MovieItemKey } from 'components';
-import { GENRE_LIST } from 'utils/const';
-import { prepareRuntime } from 'utils/helpers';
+import { GENRE_LIST } from 'common/const';
+import { mapRuntimeToString } from 'services';
 import { InputAdornment, TextField } from '@mui/material';
 
 const handleMovieInputTextChange =
@@ -54,11 +54,13 @@ export const inputComponent =
       case MovieItemKey.RUNTIME:
         const runtimeValue = movieItem[keyName] ? movieItem[keyName] : 0;
         const runtimeProps = {
-          value: isRuntimeFocus ? runtimeValue : prepareRuntime(runtimeValue),
+          value: isRuntimeFocus
+            ? runtimeValue
+            : mapRuntimeToString(runtimeValue),
           InputProps: isRuntimeFocus
             ? {
                 endAdornment: (
-                  <InputAdornment position="start">min</InputAdornment>
+                  <InputAdornment position='start'>min</InputAdornment>
                 )
               }
             : null,

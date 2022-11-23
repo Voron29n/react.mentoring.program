@@ -12,7 +12,7 @@ interface IDropDownItemProps {
 
 const DropDownItem = ({ value, handleClick }: IDropDownItemProps) => (
   <div
-    className={'drop__down__item upper__text'}
+    className='drop__down__item upper__text'
     onClick={() => handleClick(value)}
   >
     {value.label}

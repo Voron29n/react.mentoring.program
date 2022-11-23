@@ -26,8 +26,7 @@
     "normalize-css": "^2.3.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-icons": "^4.6.0",
-    "typescript": "^4.8.4"
+    "react-icons": "^4.6.0"
   },
   "devDependencies": {
     "@babel/core": "^7.19.3",
@@ -36,6 +35,7 @@
     "@babel/preset-typescript": "^7.18.6",
     "@typescript-eslint/eslint-plugin": "^5.40.1",
     "@typescript-eslint/parser": "^5.40.1",
+    "typescript": "^4.8.4",
     "babel-loader": "^8.2.5",
     "babel-plugin-module-resolver": "^4.1.0",
     "clean-webpack-plugin": "^4.0.0",

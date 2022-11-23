@@ -1,9 +1,9 @@
 import React, { Dispatch, SetStateAction, useMemo } from 'react';
 import { IMovieItem, MovieDetail, SearchBar } from 'components';
 import { ILightboxProps } from 'containers';
-import { Button, Logo } from 'common';
+import { Button, Logo } from 'common/components';
 import { IoSearchOutline } from 'react-icons/io5';
-import { ADD_MOVE_BUTTON } from 'utils/const';
+import { ADD_MOVE_BUTTON } from 'common/const';
 import { handleAddMovie } from './utils';
 import bitmap from 'images/bitmap.png';
 import './style.scss';
@@ -44,7 +44,7 @@ export const Header = ({
       <Logo />
       {movieDetail ? (
         <>
-          <div className={'search__icon'}>
+          <div className='search__icon'>
             <IoSearchOutline onClick={handleSearchDetailClick} />
           </div>
           <MovieDetail movieDetail={movieDetail} />

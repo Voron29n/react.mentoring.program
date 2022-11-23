@@ -1,7 +1,7 @@
 import React, { Dispatch } from 'react';
 import { Confirm, IMovieItem } from 'components';
 import { ILightboxProps, LightboxSize, MovieForm } from 'containers';
-import { CONFIRM_COMPONENT } from 'utils/const/viewComponents';
+import { CONFIRM_COMPONENT } from 'common/const';
 
 const handleDeleteAction = (
   handleDelete: () => void,

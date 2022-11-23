@@ -1,6 +1,6 @@
 import React from 'react';
 import { IMovieItem } from 'components';
-import { prepareRuntime } from 'utils/helpers';
+import { mapRuntimeToString } from 'services';
 import './style.scss';
 
 interface IMovieItemProps {
@@ -20,12 +20,12 @@ export const MovieDetail = ({ movieDetail }: IMovieItemProps) => {
 
   const genreText = genres?.join(', ');
   const releaseYear = new Date(releaseDate).getFullYear();
-  const runtimeFormat = prepareRuntime(runtime);
+  const runtimeFormat = mapRuntimeToString(runtime);
 
   return (
-    <div className={'movie__detail__container'}>
-      <img className={'poster__img'} src={posterPath} alt={title} />
-      <div className={'info'}>
+    <div className='movie__detail__container'>
+      <img className='poster__img' src={posterPath} alt={title} />
+      <div className='info'>
         <div className={'main__data'}>
           <div className={'title'}>{title}</div>
           <div className={'rating'}>{voteAverage}</div>

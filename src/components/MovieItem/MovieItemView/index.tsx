@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { DropDown, IDropDownItem, IMovieItem } from 'components';
-import { MOVIE_ACTION } from 'utils/const';
-import { useHovering } from 'utils/hooks';
+import { useHovering } from 'hooks';
+import { MOVIE_ACTION } from 'common/const';
 import movieAction from 'images/movieAction.svg';
 import './style.scss';
 
@@ -35,14 +35,14 @@ export const MovieView = ({
   const genreText = genres?.join(', ');
 
   return (
-    <div className={'movie__item__container'} ref={refContainer}>
-      <div className={'item'} onClick={handleClick}>
-        <img src={posterPath} alt="" />
-        <div className={'info'}>
+    <div className='movie__item__container' ref={refContainer}>
+      <div className='item' onClick={handleClick}>
+        <img src={posterPath} alt='' />
+        <div className='info'>
           <div>{title}</div>
-          <div className={'release'}>{new Date(releaseDate).getFullYear()}</div>
+          <div className='release'>{new Date(releaseDate).getFullYear()}</div>
         </div>
-        <div className={'genre'}>{genreText}</div>
+        <div className='genre'>{genreText}</div>
       </div>
       {isHovering &&
         (isBarOpen ? (
@@ -56,8 +56,8 @@ export const MovieView = ({
         ) : (
           <img
             src={movieAction}
-            className={'actions'}
-            alt="actions"
+            className='actions'
+            alt='actions'
             onClick={handleActionClick}
           />
         ))}

@@ -14,8 +14,8 @@ import {
   Lightbox,
   MovieList
 } from 'containers';
-import { GENRE_BAR, SORT_BAR } from 'utils/const';
-import { filterMovieList, getMovieListMockData } from 'utils/helpers';
+import { filterMovieList, mapMockDataToMovieList } from 'services';
+import { GENRE_BAR, SORT_BAR } from 'common/const';
 import { AdapterMoment } from '@mui/x-date-pickers/AdapterMoment';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import './style.scss';
@@ -30,8 +30,9 @@ const App = () => {
     useState<IDropDownItem>(DEFAULT_GENRE_BAR);
   const [activeSortType, setActiveSortType] =
     useState<IDropDownItem>(DEFAULT_SORT_TYPE);
-  const [movieList, setMovieList] =
-    useState<Array<IMovieItem>>(getMovieListMockData);
+  const [movieList, setMovieList] = useState<Array<IMovieItem>>(
+    mapMockDataToMovieList
+  );
   const [movieDetail, setMovieDetail] = useState<IMovieItem>(null);
 
   const actualMovieList = useMemo(

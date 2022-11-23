@@ -6,7 +6,7 @@ interface IFilterBarProps {
 }
 
 export const FilterBar = ({ children }: IFilterBarProps) => (
-  <div className={'filter__bar'}>
-    <div className={'filter__bar__container'}>{children}</div>
+  <div className='filter__bar'>
+    <div className='filter__bar__container'>{children}</div>
   </div>
 );

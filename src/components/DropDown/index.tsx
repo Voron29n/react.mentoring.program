@@ -36,7 +36,7 @@ export const DropDown = ({
   return (
     <div className={containerClassNames}>
       {isCloseIcon && (
-        <div className={'close__icon'}>
+        <div className='close__icon'>
           <IoClose onClick={handleCloseIcon} />
         </div>
       )}

@@ -16,11 +16,11 @@ export const MovieListView = ({
   handleMovieDetail,
   handleOpenLightbox
 }: IMovieListView) => (
-  <div className={'movie__view'}>
-    <div className={'movie__count'}>
+  <div className='movie__view'>
+    <div className='movie__count'>
       <span>{movieList.length}</span>movies found
     </div>
-    <div className={'movie__list'}>
+    <div className='movie__list'>
       {movieList?.map(movieItem => (
         <MovieItem
           key={movieItem.id}

@@ -20,7 +20,7 @@ const MovieInputView = ({
   return (
     <>
       <div className={`movie__input__container ${customClasses.join(' ')}`}>
-        <div className={'label upper__text'}>{label}</div>
+        <div className='label upper__text'>{label}</div>
         {children}
       </div>
     </>

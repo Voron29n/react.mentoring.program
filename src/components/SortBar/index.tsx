@@ -1,6 +1,6 @@
 import React, { Dispatch, SetStateAction, useState } from 'react';
 import { DropDown, IDropDownItem } from 'components';
-import { SORT_BAR } from 'utils/const';
+import { SORT_BAR } from 'common/const';
 import sortBarImg from 'images/sortbar.png';
 import './style.scss';
 
@@ -26,9 +26,9 @@ export const SortBar = ({ activeSortType, setActiveSortType }: ISortBar) => {
 
   return (
     <div className={`sort__bar__container upper__text`}>
-      <div className={'label'}>{SORT_BAR_LABEL}</div>
+      <div className='label'>{SORT_BAR_LABEL}</div>
       <div>
-        <div className={'select'} onClick={handleSelectClick}>
+        <div className='select' onClick={handleSelectClick}>
           <div className={`active__item`}>{activeSortType.label}</div>
           <img
             className={`select__img ${isBarOpen ? 'img__flip' : ''}`}
