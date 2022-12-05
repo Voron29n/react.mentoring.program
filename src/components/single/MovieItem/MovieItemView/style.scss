@@ -1,0 +1,67 @@
+@import '~utils/style/_constant';
+
+$lineHeightTitle: 22px;
+$fontSizeTitle: 18px;
+
+$movieWitch: 325px;
+$movieHeight: 550px;
+
+$posterHeight: 480px;
+
+.movie__item__container {
+  position: relative;
+
+  .item {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 0 0 51px;
+    width: $movieWitch;
+    height: $movieHeight;
+
+    .poster {
+      height: $posterHeight ;
+    }
+
+    .info {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+
+      color: $color5;
+      @include fontBase($fontWeightGenre, $lineHeightTitle, $fontSizeTitle);
+      mix-blend-mode: normal;
+      opacity: 0.7;
+
+      .release {
+        border: 1px solid $color5;
+        border-radius: 4px;
+        padding: 2px;
+      }
+    }
+
+    .genre {
+      color: $color5;
+      @include fontBase($fontWeightGenre, $lineHeightGenre, $fontSizeGenre);
+      mix-blend-mode: normal;
+      opacity: 0.5;
+    }
+  }
+
+  .actions {
+    cursor: pointer;
+    position: absolute;
+    margin: 16px 16px;
+    top: 0;
+    right: 0;
+  }
+
+  .movie__item__drop-down {
+    background: $color3;
+    width: 160px;
+    text-align: left;
+    margin: 16px 16px;
+    top: 0;
+    right: 0;
+  }
+}

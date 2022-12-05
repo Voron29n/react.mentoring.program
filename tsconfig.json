@@ -14,14 +14,14 @@
     "paths": {
       "*": ["src/*"],
       "images/*": ["public/images/*"],
-      "common/*": ["src/common/*"],
       "components/*": ["src/components/*"],
-      "containers/*": ["src/containers/*"],
       "hooks/*": ["src/hooks/*"],
       "services/*": ["src/services/*"],
+      "store/*": ["src/store/*"],
+      "types/*": ["src/types/*"],
       "utils/*": ["src/utils/*"]
     }
   },
-  "include": ["./src/**/*"],
+  "include": ["./src/**/*", "./config/**/*"],
   "exclude": ["node_modules"]
 }
