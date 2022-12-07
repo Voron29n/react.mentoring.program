@@ -7,19 +7,19 @@
 **Result:**  [CodeSandbox](https://codesandbox.io/s/first-task-reactjs-global-mentoring-program-47ygyz?file=/src/App.js)
 >        
 > 
-> 2. [ ] **Webpack.** **Start:** _Oct 19, 2022_   **Deadline:** _Oct 25, 2022_
+> 2. [X] **Webpack.** **Start:** _Oct 19, 2022_   **Deadline:** _Oct 25, 2022_
 >
 >
-> 3. [ ] **Components (Part 1).** **Start:** _Oct 26, 2022_   **Deadline:** _Nov 1, 2022_
+> 3. [X] **Components (Part 1).** **Start:** _Oct 26, 2022_   **Deadline:** _Nov 1, 2022_
 >
 >
-> 4. [ ] **Components (Part 2).** **Start:** _Nov 2, 2022_   **Deadline:** _Nov 8, 2022_
+> 4. [X] **Components (Part 2).** **Start:** _Nov 2, 2022_   **Deadline:** _Nov 8, 2022_
 >
 >
-> 5. [ ] **Hooks.** **Start:** _Nov 9, 2022_   **Deadline:** _Nov 15, 2022_
+> 5. [X] **Hooks.** **Start:** _Nov 9, 2022_   **Deadline:** _Nov 15, 2022_
 >
 >
-> 6. [ ] **Redux.** **Start:** _Nov 16, 2022_   **Deadline:** _Nov 29, 2022_
+> 6. [X] **Redux.** **Start:** _Nov 16, 2022_   **Deadline:** _Nov 29, 2022_
 >
 >
 > 7. [ ] **Routing.** **Start:** _Oct 30, 2022_   **Deadline:** _Dec 6, 2022_
