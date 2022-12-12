@@ -1,10 +1,13 @@
 import React, { memo } from 'react';
-import { CONGRATULATIONS_ADD_MOVIE } from 'utils';
 import congratulationsIcon from 'images/congratulations.svg';
 import './style.scss';
 
-const CongratulationsComponent = () => {
-  const { headline, text } = CONGRATULATIONS_ADD_MOVIE;
+interface ICongratulationsProps {
+  headline: string;
+  text: string;
+}
+
+const CongratulationsMemo = ({ headline, text }: ICongratulationsProps) => {
   return (
     <div className='congratulations__container'>
       <div className='congratulations_icon'>
@@ -16,4 +19,4 @@ const CongratulationsComponent = () => {
   );
 };
 
-export const Congratulations = memo(CongratulationsComponent);
+export const Congratulations = memo(CongratulationsMemo);

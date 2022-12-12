@@ -1,7 +1,10 @@
 @import '~utils/style/_constant';
 
-$marginMovieCount: 0 0 25px 0;
+$marginMovieCount: 0 0 25px;
 $marginCount: 0 10px 0 0;
+
+$movieListBottomMargin: 50px;
+$loadingHeight: 600px;
 
 $lineHeightCount: 24px;
 $lineHeightCountText: 20px;
@@ -16,6 +19,13 @@ $fontSizeCountText: 18px;
   flex-direction: column;
   background: $color3;
 
+  &.movie__loading {
+    height: $loadingHeight;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
   .movie__count {
     display: flex;
     align-items: center;
@@ -23,18 +33,14 @@ $fontSizeCountText: 18px;
     margin: $marginMovieCount;
     color: $color5;
     @include fontBase(
-      $fontWeightCountText,
-      $lineHeightCountText,
-      $fontSizeCountText
+                    $fontWeightCountText,
+                    $lineHeightCountText,
+                    $fontSizeCountText
     );
 
     span {
       margin: $marginCount;
-      @include fontBase(
-        $fontWeightCount,
-        $lineHeightCount,
-        $fontSizeCount
-      );
+      @include fontBase($fontWeightCount, $lineHeightCount, $fontSizeCount);
     }
   }
 
@@ -42,6 +48,8 @@ $fontSizeCountText: 18px;
     width: inherit;
     grid-template-columns: repeat(3, 325px);
     display: grid;
+    row-gap: $movieListBottomMargin;
+    margin: 0 0 $movieListBottomMargin;
     justify-content: space-between;
     align-content: center;
     align-items: center;

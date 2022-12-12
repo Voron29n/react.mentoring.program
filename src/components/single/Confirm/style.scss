@@ -11,21 +11,23 @@
     text-align: left;
     color: $color5;
     @include fontBase(
-      $fontWeightHeadline,
-      $lineHeightHeadline,
-      $fontSizeHeadline,
-      $letterSpacingHeadline
+                    $fontWeightHeadline,
+                    $lineHeightHeadline,
+                    $fontSizeHeadline,
+                    $letterSpacingHeadline
     );
   }
+
   .confirm__text {
     text-align: left;
     color: $color5;
     @include fontBase(
-      $fontWeightLowText,
-      $lineHeightLowText,
-      $fontSizeLowText
+                    $fontWeightLowText,
+                    $lineHeightLowText,
+                    $fontSizeLowText
     );
   }
+
   .confirm__button__container {
     display: flex;
     justify-content: right;

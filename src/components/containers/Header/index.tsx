@@ -1,8 +1,8 @@
-import React, { memo, useCallback } from 'react';
+import React, { memo, useCallback, useContext } from 'react';
 import { Button, Logo, MovieDetail, SearchBar } from 'components';
-import { ADD_MOVE_BUTTON } from 'utils';
-import { handleAddMovie } from './utils';
+import { ILightboxContext, LightboxContext, MovieActionTypes } from 'context';
 import { useActions, useTypedSelector } from 'hooks';
+import { ADD_MOVE_BUTTON } from 'utils';
 import { IoSearchOutline } from 'react-icons/io5';
 import bitmap from 'images/bitmap.png';
 import './style.scss';
@@ -13,11 +13,17 @@ const HeaderStyle = {
 
 export const HeaderComponent = () => {
   const { movieDetail } = useTypedSelector(state => state.movieDetail);
-  const { openLightbox, addMovies, deleteMovieDetail } = useActions();
+  const { deleteMovieDetail } = useActions();
+  const { handleLightboxMovieActions, setLightbox } =
+    useContext<ILightboxContext>(LightboxContext);
 
   const handleAddMovieClick = useCallback(
-    () => handleAddMovie(addMovies, openLightbox),
-    [addMovies, openLightbox]
+    () =>
+      handleLightboxMovieActions({
+        action: MovieActionTypes.ADD,
+        setLightbox
+      }),
+    [setLightbox]
   );
 
   const handleSearchDetailClick = useCallback(() => {
@@ -27,7 +33,9 @@ export const HeaderComponent = () => {
   return (
     <header
       style={HeaderStyle}
-      className={`header__container ${movieDetail ? 'movie__detail' : ''}`}
+      className={`header__container sticky__position ${
+        movieDetail ? 'movie__detail' : ''
+      }`}
     >
       <Logo />
       {movieDetail ? (

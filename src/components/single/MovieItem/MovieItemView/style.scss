@@ -11,16 +11,27 @@ $posterHeight: 480px;
 .movie__item__container {
   position: relative;
 
+  &.select__item {
+    padding: 10px;
+    background-color: $color4;
+    border: 1px solid $color1;
+    border-radius: 4px;
+  }
+
+  &.opacity__item {
+    opacity: 0.4;
+  }
+
   .item {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    margin: 0 0 51px;
     width: $movieWitch;
     height: $movieHeight;
+    color: $color5;
 
     .poster {
-      height: $posterHeight ;
+      height: $posterHeight;
     }
 
     .info {
@@ -28,7 +39,6 @@ $posterHeight: 480px;
       flex-direction: row;
       justify-content: space-between;
 
-      color: $color5;
       @include fontBase($fontWeightGenre, $lineHeightTitle, $fontSizeTitle);
       mix-blend-mode: normal;
       opacity: 0.7;
@@ -37,11 +47,15 @@ $posterHeight: 480px;
         border: 1px solid $color5;
         border-radius: 4px;
         padding: 2px;
+
+        width: 46px;
+        height: 24px;
+        display: flex;
+        justify-content: center;
       }
     }
 
     .genre {
-      color: $color5;
       @include fontBase($fontWeightGenre, $lineHeightGenre, $fontSizeGenre);
       mix-blend-mode: normal;
       opacity: 0.5;

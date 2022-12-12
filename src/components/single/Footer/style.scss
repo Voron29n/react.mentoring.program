@@ -3,6 +3,9 @@
 $heightFooter: 70px;
 
 .footer__container {
+  position: sticky;
+  bottom: 0;
+
   display: flex;
   justify-content: center;
   align-items: center;

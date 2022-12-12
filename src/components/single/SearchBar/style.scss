@@ -15,10 +15,10 @@ $height: 49px;
     height: $height;
     color: $color5;
     @include fontBase(
-      $fontWeightHeadline,
-      $lineHeightHeadline,
-      $fontSizeHeadline,
-      $letterSpacingHeadline
+                    $fontWeightHeadline,
+                    $lineHeightHeadline,
+                    $fontSizeHeadline,
+                    $letterSpacingHeadline
     );
   }
 
@@ -34,9 +34,9 @@ $height: 49px;
 
     color: $color5;
     @include fontBase(
-      $fontWeightLowText,
-      $lineHeightLowText,
-      $fontSizeLowText
+                    $fontWeightLowText,
+                    $lineHeightLowText,
+                    $fontSizeLowText
     );
   }
 

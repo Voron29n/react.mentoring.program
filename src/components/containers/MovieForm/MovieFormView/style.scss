@@ -23,10 +23,10 @@ $movieFormGap: 30px;
     text-align: left;
     color: $color5;
     @include fontBase(
-      $fontWeightHeadline,
-      $lineHeightHeadline,
-      $fontSizeHeadline,
-      $letterSpacingHeadline
+                    $fontWeightHeadline,
+                    $lineHeightHeadline,
+                    $fontSizeHeadline,
+                    $letterSpacingHeadline
     );
   }
 
@@ -65,10 +65,10 @@ $movieFormGap: 30px;
       border-radius: 4px;
       background: $color3;
       @include fontBase(
-        $fontWeightButton,
-        $lineHeightButton,
-        $fontSizeButton,
-        $letterSpacingButton
+                      $fontWeightButton,
+                      $lineHeightButton,
+                      $fontSizeButton,
+                      $letterSpacingButton
       );
 
       &.reset__button {

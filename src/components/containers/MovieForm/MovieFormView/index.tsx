@@ -7,8 +7,8 @@ interface IFormMovieView {
   smallInputs: JSX.Element | JSX.Element[];
   largeInputs: JSX.Element | JSX.Element[];
   headline: string;
-  handleReset: () => void;
-  handleSubmit: () => void;
+  handleReset: (e: any) => void;
+  handleSubmit: (e: any) => void;
 }
 
 const MovieFormViewComponent = ({

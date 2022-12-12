@@ -3,7 +3,7 @@ import { Logo } from 'components';
 import './style.scss';
 
 const FooterComponent = () => (
-  <div className='footer__container'>
+  <div className='footer__container sticky__position'>
     <Logo />
   </div>
 );

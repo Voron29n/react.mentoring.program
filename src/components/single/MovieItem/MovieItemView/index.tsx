@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { DropDown, IDropDownItem, Movie } from 'components';
-import { useHovering } from 'hooks';
+import { useHovering, useTypedSelector } from 'hooks';
 import { MOVIE_ACTION } from 'utils';
 import movieAction from 'images/movieAction.svg';
 import './style.scss';
@@ -19,10 +19,12 @@ export const MovieView = ({
   handleClick
 }: IMovieItemProps) => {
   const [isBarOpen, setIsBarOpen] = useState(true);
+  const { movieDetail } = useTypedSelector(state => state.movieDetail);
 
   const refContainer = useRef<HTMLDivElement>(null);
   const isHovering = useHovering(refContainer);
 
+  const handleActionClick = () => setIsBarOpen(true);
   const handleSelectedAction = useCallback(
     (dropDownItem: IDropDownItem) => {
       handleSelectedDropdownItem(dropDownItem);
@@ -33,7 +35,6 @@ export const MovieView = ({
   const handleCloseActions = useCallback(() => {
     setIsBarOpen(false);
   }, []);
-  const handleActionClick = () => setIsBarOpen(true);
 
   useEffect(() => {
     if (!isHovering) {
@@ -41,11 +42,20 @@ export const MovieView = ({
     }
   }, [isHovering]);
 
-  const { title, genres, releaseDate, posterPath } = movieItem;
+  const { id, title, genres, releaseDate, posterPath } = movieItem;
   const genreText = genres?.join(', ');
 
   return (
-    <div className='movie__item__container' ref={refContainer}>
+    <div
+      className={`movie__item__container ${
+        id === movieDetail?.id
+          ? 'select__item'
+          : !!movieDetail
+          ? 'opacity__item'
+          : ''
+      }`}
+      ref={refContainer}
+    >
       <div className='item' onClick={handleClick}>
         <img className='poster' src={posterPath} alt={title} />
         <div className='info'>

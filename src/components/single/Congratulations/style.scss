@@ -20,12 +20,13 @@ $congratulationsTextWidth: 300px;
     text-align: center;
     color: $color5;
     @include fontBase(
-      $fontWeightHeadline,
-      $lineHeightHeadline,
-      $fontSizeHeadline,
-      $letterSpacingHeadline
+                    $fontWeightHeadline,
+                    $lineHeightHeadline,
+                    $fontSizeHeadline,
+                    $letterSpacingHeadline
     );
   }
+
   .text {
     width: $congratulationsTextWidth;
     text-align: center;

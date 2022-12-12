@@ -1,46 +1,55 @@
-import React, { useCallback, useState } from 'react';
-import { MovieFormView, MovieInput, MovieInputSize, Movie } from 'components';
+import React from 'react';
+import { Movie, MovieFormView, MovieInput, MovieInputSize } from 'components';
 import { MOVIE_FORM } from 'utils';
+import { Formik } from 'formik';
+import * as Yup from 'yup';
 
 interface IMovieForm {
   headline: string;
-  editMovieItem?: Movie;
+  movie: Movie;
   onSubmit: (movieItem: Movie) => void;
 }
 
-export const MovieForm = ({
-  onSubmit,
-  headline,
-  editMovieItem = {} as Movie
-}: IMovieForm) => {
-  const [movieItem, setMovieItem] = useState<Movie>(editMovieItem);
+const SignupSchema = Yup.object().shape({
+  title: Yup.string()
+    .min(2, 'Too Short!')
+    .max(50, 'Too Long!')
+    .required('Required'),
+  voteAverage: Yup.number()
+    .min(0, 'Less then min value!')
+    .max(10, 'More then max value!')
+    .required('Required'),
+  posterPath: Yup.string().required('Required'),
+  runtime: Yup.number().min(0, 'Too low!').required('Required'),
+  releaseDate: Yup.string().required('Required'),
+  genres: Yup.array().min(1, 'Less then min value!').required('Required'),
+  overview: Yup.string().required('Required')
+});
 
-  const handleReset = useCallback(() => {
-    setMovieItem(editMovieItem);
-  }, [editMovieItem]);
-
-  const handleSubmit = useCallback(() => {
-    onSubmit(movieItem);
-  }, [movieItem, onSubmit]);
-
+export const MovieForm = ({ onSubmit, headline, movie }: IMovieForm) => {
   const filterInputsBySize = (inputSize: MovieInputSize) => {
     return MOVIE_FORM.filter(({ size }) => size === inputSize).map(formItem => (
-      <MovieInput
-        key={formItem.keyName}
-        setMovieItem={setMovieItem}
-        keyValue={movieItem[formItem.keyName as keyof Movie]}
-        {...formItem}
-      />
+      <MovieInput key={formItem.keyName} {...formItem} />
     ));
   };
 
   return (
-    <MovieFormView
-      smallInputs={filterInputsBySize(MovieInputSize.SMALL)}
-      largeInputs={filterInputsBySize(MovieInputSize.LARGE)}
-      headline={headline}
-      handleReset={handleReset}
-      handleSubmit={handleSubmit}
-    />
+    <Formik
+      initialValues={movie}
+      validationSchema={SignupSchema}
+      onSubmit={values => {
+        onSubmit(values);
+      }}
+    >
+      {({ handleSubmit, handleReset }) => (
+        <MovieFormView
+          smallInputs={filterInputsBySize(MovieInputSize.SMALL)}
+          largeInputs={filterInputsBySize(MovieInputSize.LARGE)}
+          headline={headline}
+          handleReset={handleReset}
+          handleSubmit={handleSubmit}
+        />
+      )}
+    </Formik>
   );
 };

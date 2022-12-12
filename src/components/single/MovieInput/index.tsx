@@ -1,80 +1,117 @@
-import React, {
-  Dispatch,
-  memo,
-  SetStateAction,
-  useCallback,
-  useMemo,
-  useState
-} from 'react';
-import { Movie, MovieInputView, MovieKey } from 'components';
-import {
-  getInputValueOrDefault,
-  prepareGenreField,
-  prepareRuntimeField,
-  prepareTextField
-} from './utils';
+import React, { memo, useCallback, useMemo, useState } from 'react';
+import { GenreCheckmarks, Movie, MovieInputView, MovieKey } from 'components';
+import { InputAdornment, TextField } from '@mui/material';
+import { GENRE_LIST, mapRuntimeToString } from 'utils';
+import { useFormikContext } from 'formik';
 
 interface IMovieInput {
   label: string;
   placeholder: string;
   keyName: MovieKey;
   customClasses: Array<string>;
-  keyValue: string | number | Array<string>;
-  setMovieItem: Dispatch<SetStateAction<Movie>>;
 }
 
-const MovieInputComponent = ({
+const MovieInputMemo = ({
   label,
   placeholder,
   customClasses,
-  keyName,
-  keyValue,
-  setMovieItem
+  keyName
 }: IMovieInput) => {
   const [isRuntimeFocus, setIsRuntimeFocus] = useState(false);
+  const { values, setValues, getFieldMeta, handleChange } =
+    useFormikContext<Movie>();
 
-  const onMovieInputChange = useCallback(
-    (value: string | number | Array<string>) => {
-      setMovieItem((prevMovieItem: Movie) => {
-        const editMovieItem = { ...prevMovieItem };
-        editMovieItem[keyName as keyof Movie] = value;
-        return editMovieItem;
-      });
+  const handleFocusRuntime = () => {
+    setIsRuntimeFocus(true);
+  };
+  const handleBlurRuntime = () => {
+    setIsRuntimeFocus(false);
+  };
+  const handleGenresChange = useCallback(
+    (genres: string[]) => {
+      setValues((oldValue: Movie) => ({ ...oldValue, genres }), true);
     },
-    [keyName, setMovieItem]
+    [setValues]
   );
 
   const inputComponent = useMemo(() => {
-    const inputValue = getInputValueOrDefault(keyName, keyValue);
+    const meta = getFieldMeta(keyName);
     const commonProps = {
+      name: keyName,
       id: keyName,
       placeholder
     };
 
     switch (keyName) {
       case MovieKey.GENRE:
-        return Array.isArray(inputValue)
-          ? prepareGenreField(inputValue, onMovieInputChange, commonProps)
-          : null;
+        if (!Array.isArray(values[keyName])) {
+          return null;
+        }
+        return (
+          <GenreCheckmarks
+            meta={meta}
+            value={values.genres}
+            onChange={handleGenresChange}
+            genreList={GENRE_LIST}
+            {...commonProps}
+          />
+        );
       case MovieKey.RUNTIME:
-        return !Array.isArray(inputValue)
-          ? prepareRuntimeField(
-              isRuntimeFocus,
-              inputValue,
-              onMovieInputChange,
-              setIsRuntimeFocus,
-              commonProps
-            )
-          : null;
+        return (
+          <TextField
+            onFocus={handleFocusRuntime}
+            onBlur={handleBlurRuntime}
+            onChange={handleChange}
+            error={Boolean(meta.error)}
+            helperText={meta.error}
+            value={
+              isRuntimeFocus
+                ? values[keyName]
+                : mapRuntimeToString(values[keyName])
+            }
+            type={isRuntimeFocus ? 'number' : 'text'}
+            InputProps={
+              isRuntimeFocus
+                ? {
+                    endAdornment: (
+                      <InputAdornment position='start'>min</InputAdornment>
+                    )
+                  }
+                : null
+            }
+            {...commonProps}
+          />
+        );
       default:
-        return prepareTextField(
-          keyName,
-          inputValue,
-          onMovieInputChange,
-          commonProps
+        const type =
+          keyName === MovieKey.DATE
+            ? 'date'
+            : keyName === MovieKey.RATING
+            ? 'number'
+            : 'text';
+
+        return (
+          <TextField
+            multiline={keyName === MovieKey.OVERVIEW}
+            rows={keyName === MovieKey.OVERVIEW ? 7 : 1}
+            type={type}
+            onChange={handleChange}
+            error={Boolean(meta.error)}
+            helperText={meta.error}
+            value={values[keyName]}
+            {...commonProps}
+          />
         );
     }
-  }, [keyName, keyValue, placeholder, isRuntimeFocus, onMovieInputChange]);
+  }, [
+    getFieldMeta,
+    handleChange,
+    handleGenresChange,
+    isRuntimeFocus,
+    keyName,
+    placeholder,
+    values
+  ]);
 
   return (
     <>
@@ -85,4 +122,4 @@ const MovieInputComponent = ({
   );
 };
 
-export const MovieInput = memo(MovieInputComponent);
+export const MovieInput = memo(MovieInputMemo);

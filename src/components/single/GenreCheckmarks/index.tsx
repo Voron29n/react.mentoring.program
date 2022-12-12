@@ -2,6 +2,7 @@ import React, { useCallback, useEffect, useState } from 'react';
 import {
   Checkbox,
   FormControl,
+  FormHelperText,
   ListItemText,
   MenuItem,
   Select,
@@ -21,6 +22,7 @@ const MenuProps = {
 
 interface IGenreCheckmarks {
   id: string;
+  meta: any;
   placeholder: string;
   genreList: Array<string>;
   value: Array<string>;
@@ -30,6 +32,7 @@ interface IGenreCheckmarks {
 export const GenreCheckmarks = ({
   onChange,
   id,
+  meta,
   placeholder,
   genreList,
   value = []
@@ -53,7 +56,10 @@ export const GenreCheckmarks = ({
   );
 
   return (
-    <FormControl sx={{ margin: 0, width: 'inherit' }}>
+    <FormControl
+      error={Boolean(meta.error)}
+      sx={{ margin: 0, width: 'inherit' }}
+    >
       <Select
         id={id}
         placeholder={placeholder}
@@ -70,6 +76,7 @@ export const GenreCheckmarks = ({
           </MenuItem>
         ))}
       </Select>
+      {meta.error && <FormHelperText>{meta.error}</FormHelperText>}
     </FormControl>
   );
 };
