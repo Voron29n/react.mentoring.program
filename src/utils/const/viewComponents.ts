@@ -1,6 +1,7 @@
 import { IDropDownItem } from 'components/single/DropDown/DropDownItem';
 
 export const SEARCH_COMPONENT = {
+  name: 'searchQuery',
   headline: 'find you movie',
   placeholder: 'What do you want to watch?',
   button: {
@@ -33,6 +34,10 @@ export const SORT_BAR = {
   dropDownClassName: ['sort__bar__drop-down'],
   labelText: 'sort by',
   list: [
+    {
+      label: 'No sort',
+      value: ''
+    },
     {
       label: 'release date',
       value: 'release_date'

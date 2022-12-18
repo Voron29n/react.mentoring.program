@@ -38,7 +38,8 @@ enum SearchBy {
 
 export const generateMoviesUrl = (
   activeGenre: string,
-  activeSortType: string
+  activeSortType: string,
+  searchQuery: string
 ): string => {
   const url = new URL(
     `${baseApiConfig._apiBase}movies?limit=${baseApiConfig._baseLimit}&offset=${baseApiConfig._baseOffset}`
@@ -51,11 +52,17 @@ export const generateMoviesUrl = (
     );
   }
   if (activeGenre) {
+    url.searchParams.append(baseApiConfig._searchParams.filter, activeGenre);
+  }
+  if (searchQuery) {
+    url.searchParams.append(
+      baseApiConfig._searchParams.searchQuery,
+      searchQuery
+    );
     url.searchParams.append(
       baseApiConfig._searchParams.searchBy,
-      SearchBy.GENRES
+      SearchBy.TITLE
     );
-    url.searchParams.append(baseApiConfig._searchParams.filter, activeGenre);
   }
   return url.toString();
 };

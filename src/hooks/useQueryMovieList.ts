@@ -1,12 +1,12 @@
+import { useQuery, UseQueryResult } from '@tanstack/react-query';
+import { Movie } from 'components';
 import {
   fetchReq,
   generateMoviesUrl,
   ServerMovie,
   transformMovieMap
 } from 'hooks/utils';
-import { IDropDownItem, Movie } from 'components';
 import { baseApiConfig } from 'utils';
-import { useQuery, UseQueryResult } from '@tanstack/react-query';
 
 const checkMovieImage = async (imageUrl: string): Promise<boolean> => {
   return fetch(imageUrl)
@@ -39,9 +39,14 @@ const filterEmptyMovieImages = async (movieList: Array<Movie>) => {
 
 export const fetchMovieList = async (
   activeGenre: string,
-  activeSortType: string
+  activeSortType: string,
+  searchQuery: string
 ): Promise<Array<Movie>> => {
-  const movieListUrl = generateMoviesUrl(activeGenre, activeSortType);
+  const movieListUrl = generateMoviesUrl(
+    activeGenre,
+    activeSortType,
+    searchQuery
+  );
   const res = await fetchReq({ url: movieListUrl });
   const json = await res.json();
 
@@ -53,11 +58,12 @@ export const fetchMovieList = async (
 };
 
 export const useQueryMovieList = (
-  activeGenre: IDropDownItem,
-  activeSortType: IDropDownItem
+  activeGenre: string,
+  activeSortType: string,
+  searchQuery: string
 ): UseQueryResult<Array<Movie>> => {
   return useQuery({
-    queryKey: ['movieList', activeGenre, activeSortType],
-    queryFn: () => fetchMovieList(activeGenre.value, activeSortType.value)
+    queryKey: ['movieList', activeGenre, activeSortType, searchQuery],
+    queryFn: () => fetchMovieList(activeGenre, activeSortType, searchQuery)
   });
 };

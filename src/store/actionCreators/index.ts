@@ -1,10 +1,4 @@
 import {
-  FilterBarActions,
-  FilterBarActionTypes,
-  setActiveGenre,
-  setActiveSortType
-} from './filterBar';
-import {
   deleteMovieDetail,
   MovieDetailActions,
   MovieDetailActionTypes,
@@ -18,10 +12,17 @@ import {
   MovieListActionTypes,
   saveMovieList
 } from './movieList';
+import {
+  SearchMoviesActions,
+  SearchMoviesActionTypes,
+  setActiveGenre,
+  setActiveSortType,
+  setSearchText
+} from './searchMovies';
 
 export {
-  FilterBarActions,
-  FilterBarActionTypes,
+  SearchMoviesActions,
+  SearchMoviesActionTypes,
   MovieDetailActions,
   MovieDetailActionTypes,
   MovieListActions,
@@ -31,6 +32,7 @@ export {
 export const MoviesActionCreators = {
   setActiveGenre,
   setActiveSortType,
+  setSearchText,
   setMovieDetail,
   deleteMovieDetail,
   saveMovieList,

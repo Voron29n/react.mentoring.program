@@ -1,10 +1,11 @@
 import { useActions } from './useActions';
+import { useActiveSearchParams } from './useActiveSearchParams';
 import { useHovering } from './useHovering';
-import { useTypedSelector } from './useTypedSelector';
-import { useTypedDispatch } from './useTypedDispatch';
-import { useQueryMovieList } from './useQueryMovieList';
-import { MovieQueryTypeActions, useQueryMovie } from './useQueryMovie';
 import { useMovieService } from './useMovieService';
+import { MovieQueryTypeActions, useQueryMovie } from './useQueryMovie';
+import { useQueryMovieList } from './useQueryMovieList';
+import { useTypedDispatch } from './useTypedDispatch';
+import { useTypedSelector } from './useTypedSelector';
 
 export {
   useActions,
@@ -14,5 +15,6 @@ export {
   useQueryMovieList,
   useQueryMovie,
   useMovieService,
+  useActiveSearchParams,
   MovieQueryTypeActions
 };

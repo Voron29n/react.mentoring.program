@@ -1,11 +1,11 @@
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import React, { useState } from 'react';
+import { Provider as ReduxProvider } from 'react-redux';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterMoment } from '@mui/x-date-pickers/AdapterMoment';
-import React, { useState } from 'react';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ILightboxProps } from 'components';
-import { Provider as ReduxProvider } from 'react-redux';
-import { store } from 'store';
 import { handleLightboxMovieActions, LightboxContext } from 'context';
+import { store } from 'store';
 
 interface IProvidersProp {
   children?: JSX.Element | JSX.Element[];
