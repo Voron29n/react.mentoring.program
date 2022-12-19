@@ -4,7 +4,10 @@ export const baseApiConfig = {
     sortBy: 'sortBy',
     sortOrder: 'sortOrder',
     searchBy: 'searchBy',
-    filter: 'filter'
+    filter: 'filter',
+    searchQuery: 'search',
+    genre: 'genre',
+    movie: 'movie'
   },
   _baseMovies: 9,
   _baseLimit: 40,

@@ -1,6 +1,6 @@
 import React from 'react';
-import './style.scss';
 import { GenreBar, SortBar } from 'components';
+import './style.scss';
 
 export const FilterBar = () => (
   <div className='filter__bar'>

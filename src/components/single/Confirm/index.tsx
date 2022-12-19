@@ -1,6 +1,6 @@
 import React, { memo } from 'react';
-import { CONFIRM_BUTTON } from 'utils';
 import { Button } from 'components';
+import { CONFIRM_BUTTON } from 'utils';
 import './style.scss';
 
 interface IConfirmFormProps {

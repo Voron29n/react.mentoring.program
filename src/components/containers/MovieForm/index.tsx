@@ -1,8 +1,8 @@
 import React from 'react';
-import { Movie, MovieFormView, MovieInput, MovieInputSize } from 'components';
-import { MOVIE_FORM } from 'utils';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
+import { Movie, MovieFormView, MovieInput, MovieInputSize } from 'components';
+import { MOVIE_FORM } from 'utils';
 
 interface IMovieForm {
   headline: string;

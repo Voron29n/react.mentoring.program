@@ -1,12 +1,14 @@
-import React from 'react';
-import { MovieQueryTypeActions, useActions, useMovieService } from 'hooks';
+import React, { useContext } from 'react';
 import {
   Congratulations,
   FetchErrorMessage,
+  LightboxSize,
   Movie,
   MovieForm,
   Spinner
 } from 'components';
+import { LightboxContext } from 'context';
+import { MovieQueryTypeActions, useActions, useMovieService } from 'hooks';
 import { CONGRATULATIONS_EDIT_MOVIE } from 'utils';
 
 interface IEditMovieProps {
@@ -15,10 +17,17 @@ interface IEditMovieProps {
 
 export const EditMovie = ({ editedMovie }: IEditMovieProps) => {
   const { editMovie } = useActions();
+  const { setLightbox } = useContext(LightboxContext);
   const { isError, isLoading, isSuccess, isConfirmed, handleConfirm } =
     useMovieService({
       defaultMovie: editedMovie,
       movieAction: editMovie,
+      successCallback: () => {
+        setLightbox(oldLightbox => ({
+          ...oldLightbox,
+          lightboxSize: LightboxSize.SMALL
+        }));
+      },
       movieQueryTypeActions: MovieQueryTypeActions.EDIT
     });
 

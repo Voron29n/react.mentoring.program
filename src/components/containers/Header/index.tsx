@@ -1,9 +1,15 @@
-import React, { memo, useCallback, useContext } from 'react';
-import { Button, Logo, MovieDetail, SearchBar } from 'components';
-import { ILightboxContext, LightboxContext, MovieActionTypes } from 'context';
-import { useActions, useTypedSelector } from 'hooks';
-import { ADD_MOVE_BUTTON } from 'utils';
+import React, { memo, useCallback, useContext, useEffect } from 'react';
 import { IoSearchOutline } from 'react-icons/io5';
+import { useSearchParams } from 'react-router-dom';
+import { Button, Logo, Movie, MovieDetail, SearchBar } from 'components';
+import { ILightboxContext, LightboxContext, MovieActionTypes } from 'context';
+import {
+  MovieQueryTypeActions,
+  useActions,
+  useMovieService,
+  useTypedSelector
+} from 'hooks';
+import { ADD_MOVE_BUTTON, baseApiConfig } from 'utils';
 import bitmap from 'images/bitmap.png';
 import './style.scss';
 
@@ -13,9 +19,24 @@ const HeaderStyle = {
 
 export const HeaderComponent = () => {
   const { movieDetail } = useTypedSelector(state => state.movieDetail);
-  const { deleteMovieDetail } = useActions();
+  const { deleteMovieDetail, setMovieDetail } = useActions();
   const { handleLightboxMovieActions, setLightbox } =
     useContext<ILightboxContext>(LightboxContext);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const { handleConfirm } = useMovieService({
+    defaultMovie: {} as Movie,
+    movieAction: setMovieDetail,
+    movieQueryTypeActions: MovieQueryTypeActions.GET
+  });
+
+  useEffect(() => {
+    const movieId = parseInt(
+      searchParams.get(baseApiConfig._searchParams.movie)
+    );
+    if (!!movieId) {
+      handleConfirm({ ...({} as Movie), id: movieId });
+    }
+  }, []);
 
   const handleAddMovieClick = useCallback(
     () =>
@@ -27,8 +48,8 @@ export const HeaderComponent = () => {
   );
 
   const handleSearchDetailClick = useCallback(() => {
-    deleteMovieDetail();
-  }, [deleteMovieDetail]);
+    deleteMovieDetail(searchParams, setSearchParams);
+  }, [searchParams, deleteMovieDetail, setSearchParams]);
 
   return (
     <header

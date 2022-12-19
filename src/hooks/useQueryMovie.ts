@@ -1,4 +1,5 @@
 import { useQuery, UseQueryResult } from '@tanstack/react-query';
+import { Movie } from 'components';
 import {
   fetchReq,
   HttpMethod,
@@ -6,7 +7,6 @@ import {
   transformMovieMap
 } from 'hooks/utils';
 import { baseApiConfig } from 'utils';
-import { Movie } from 'components';
 
 const fetchDeleteMovie = async (id: number): Promise<Response> => {
   return fetchReq({
@@ -42,17 +42,35 @@ const fetchAddMovie = async (movie: Movie): Promise<ServerMovie> => {
   return res.json();
 };
 
+const fetchGetMovie = async (movieId: number): Promise<ServerMovie> => {
+  const res = await fetchReq({
+    url: `${baseApiConfig._apiBase}movies/${movieId}`,
+    method: HttpMethod.GET,
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  });
+  return res.json();
+};
+
 export enum MovieQueryTypeActions {
+  GET = 'get-movie',
   EDIT = 'edit-movie',
   DELETE = 'delete-movie',
   ADD = 'add-movie'
 }
 
-export const useQueryMovie = (
-  movie: Movie,
-  isConfirmed: boolean,
-  movieTypeAction: MovieQueryTypeActions
-): UseQueryResult<ServerMovie | Response> => {
+interface IUseQueryMovie {
+  movie: Movie;
+  isConfirmed: boolean;
+  movieTypeAction: MovieQueryTypeActions;
+}
+
+export const useQueryMovie = ({
+  movie,
+  isConfirmed,
+  movieTypeAction
+}: IUseQueryMovie): UseQueryResult<ServerMovie | Response> => {
   const queryDelete = useQuery({
     queryKey: [MovieQueryTypeActions.DELETE, movie.id],
     queryFn: () => fetchDeleteMovie(movie.id),
@@ -68,8 +86,15 @@ export const useQueryMovie = (
     queryFn: () => fetchAddMovie(movie),
     enabled: movieTypeAction == MovieQueryTypeActions.ADD && isConfirmed
   });
+  const queryGet = useQuery({
+    queryKey: [MovieQueryTypeActions.GET, movie.id],
+    queryFn: () => fetchGetMovie(movie.id),
+    enabled: movieTypeAction == MovieQueryTypeActions.GET && isConfirmed
+  });
 
   switch (movieTypeAction) {
+    case MovieQueryTypeActions.GET:
+      return queryGet;
     case MovieQueryTypeActions.ADD:
       return queryAdd;
     case MovieQueryTypeActions.EDIT:

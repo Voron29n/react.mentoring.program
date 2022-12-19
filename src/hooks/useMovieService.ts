@@ -1,32 +1,34 @@
-import { useCallback, useContext, useEffect, useState } from 'react';
-import { MovieQueryTypeActions, useQueryMovie } from 'hooks/useQueryMovie';
-import { LightboxContext } from 'context';
-import { LightboxSize, Movie } from 'components';
-import { MovieListActions } from 'store/actionCreators';
+import { useCallback, useEffect, useState } from 'react';
 import { Dispatch } from 'redux';
+import { Movie } from 'components';
+import { MovieQueryTypeActions, useQueryMovie } from 'hooks/useQueryMovie';
 import { ServerMovie, transformMovieMap } from 'hooks/utils';
+import { MovieDetailActions, MovieListActions } from 'store/actionCreators';
 
 interface IUseMovieService {
   defaultMovie: Movie;
-  movieAction: (movie: Movie) => (dispatch: Dispatch<MovieListActions>) => void;
+  successCallback?: () => void;
+  movieAction: (
+    movie: Movie,
+    searchParams?: URLSearchParams,
+    setSearchParams?: (searchParams: URLSearchParams) => void
+  ) => (dispatch: Dispatch<MovieListActions | MovieDetailActions>) => void;
   movieQueryTypeActions: MovieQueryTypeActions;
 }
 
 export const useMovieService = ({
-  defaultMovie,
+  defaultMovie = {} as Movie,
+  successCallback = () => {},
   movieAction,
   movieQueryTypeActions
 }: IUseMovieService) => {
   const [newMovie, setNewMovie] = useState(defaultMovie);
   const [isConfirmed, setIsConfirmed] = useState(false);
-
-  const { setLightbox } = useContext(LightboxContext);
-
-  const { isError, isLoading, isSuccess, data } = useQueryMovie(
-    newMovie,
+  const { isError, isLoading, isSuccess, data } = useQueryMovie({
+    movie: newMovie,
     isConfirmed,
-    movieQueryTypeActions
-  );
+    movieTypeAction: movieQueryTypeActions
+  });
 
   const handleConfirm = useCallback((movie: Movie) => {
     setNewMovie(movie);
@@ -40,10 +42,7 @@ export const useMovieService = ({
           ? transformMovieMap<Movie>(data as ServerMovie)
           : newMovie
       );
-      setLightbox(oldLightbox => ({
-        ...oldLightbox,
-        lightboxSize: LightboxSize.SMALL
-      }));
+      successCallback();
     }
   }, [isSuccess, data]);
 

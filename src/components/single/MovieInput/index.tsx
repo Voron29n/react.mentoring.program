@@ -1,8 +1,8 @@
 import React, { memo, useCallback, useMemo, useState } from 'react';
-import { GenreCheckmarks, Movie, MovieInputView, MovieKey } from 'components';
 import { InputAdornment, TextField } from '@mui/material';
-import { GENRE_LIST, mapRuntimeToString } from 'utils';
 import { useFormikContext } from 'formik';
+import { GenreCheckmarks, Movie, MovieInputView, MovieKey } from 'components';
+import { GENRE_LIST, mapRuntimeToString } from 'utils';
 
 interface IMovieInput {
   label: string;

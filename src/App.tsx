@@ -1,14 +1,9 @@
 import React, { useContext } from 'react';
-import {
-  ErrorBoundary,
-  FilterBar,
-  Footer,
-  Header,
-  Lightbox,
-  MovieList
-} from 'components';
+import { RouterProvider } from 'react-router-dom';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
+import { Lightbox } from 'components';
 import { ILightboxContext, LightboxContext } from 'context';
+import { router } from 'utils/router';
 import './style.scss';
 
 export const App = () => {
@@ -16,12 +11,7 @@ export const App = () => {
 
   return (
     <>
-      <Header />
-      <ErrorBoundary>
-        <FilterBar />
-        <MovieList />
-      </ErrorBoundary>
-      <Footer />
+      <RouterProvider router={router} />
       {!!lightbox && <Lightbox {...lightbox} />}
       <ReactQueryDevtools initialIsOpen={false} />
     </>

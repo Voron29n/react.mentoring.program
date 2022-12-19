@@ -6,7 +6,6 @@ import {
   LightboxSize,
   Movie
 } from 'components';
-
 import { EditMovie } from 'components/service/EditMovie';
 
 interface IHandleActionsProps {

@@ -1,29 +1,30 @@
-import React, { memo, useCallback, useState } from 'react';
-import { DropDown, IDropDownItem } from 'components';
-import { useActions, useTypedSelector } from 'hooks';
-import { SORT_BAR } from 'utils';
+import React, { memo, useState } from 'react';
+import { DropDown } from 'components';
+import { useActions, useActiveSearchParams, useTypedSelector } from 'hooks';
+import { baseApiConfig, SORT_BAR } from 'utils';
 import sortBarImg from 'images/sortbar.png';
 import './style.scss';
 
 const SortBarComponent = () => {
   const [isSelectBarOpen, setIsSelectBarOpen] = useState(false);
-  const { activeSortType } = useTypedSelector(state => state.filterBar);
+  const { activeSortType } = useTypedSelector(state => state.searchMovies);
   const { setActiveSortType } = useActions();
+  const { handleSelectedActive } = useActiveSearchParams(
+    () => {
+      setIsSelectBarOpen(false);
+    },
+    baseApiConfig._searchParams.sortBy,
+    SORT_BAR.list,
+    activeSortType,
+    setActiveSortType
+  );
 
-  const handleSelectBarClick = () => {
+  const handleSelectBarClick: () => void = () => {
     setIsSelectBarOpen(prevState => !prevState);
   };
 
-  const handleSelectedSortType = useCallback(
-    (dropDownItem: IDropDownItem) => {
-      setActiveSortType(dropDownItem);
-      setIsSelectBarOpen(false);
-    },
-    [setActiveSortType]
-  );
-
   const dropDownList = SORT_BAR.list.filter(
-    ({ label }) => activeSortType.label !== label
+    ({ value }) => activeSortType.value !== value
   );
 
   return (
@@ -42,7 +43,7 @@ const SortBarComponent = () => {
           <DropDown
             classNames={SORT_BAR.dropDownClassName}
             selectList={dropDownList}
-            onSelected={handleSelectedSortType}
+            onSelected={handleSelectedActive}
           />
         )}
       </div>

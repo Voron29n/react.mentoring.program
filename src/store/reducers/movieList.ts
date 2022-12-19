@@ -1,5 +1,5 @@
-import { MovieListActions, MovieListActionTypes } from 'store/actionCreators';
 import { Movie } from 'components';
+import { MovieListActions, MovieListActionTypes } from 'store/actionCreators';
 
 type MoviesState = {
   movieList: Array<Movie>;

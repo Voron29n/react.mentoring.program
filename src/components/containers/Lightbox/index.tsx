@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
-import { ILightboxContext, LightboxContext } from 'context';
 import { IoClose } from 'react-icons/io5';
+import { ILightboxContext, LightboxContext } from 'context';
 import './style.scss';
 
 enum LightboxSize {

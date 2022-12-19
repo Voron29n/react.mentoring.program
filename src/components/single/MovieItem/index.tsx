@@ -1,7 +1,8 @@
 import React, { memo, useCallback, useContext } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { IDropDownItem, MovieView } from 'components';
-import { useActions } from 'hooks';
 import { ILightboxContext, LightboxContext, MovieActionTypes } from 'context';
+import { useActions } from 'hooks';
 
 export type Movie = {
   id: number;
@@ -32,11 +33,13 @@ interface IMovieItemProps {
 }
 
 const MovieItemMemo = ({ movieItem }: IMovieItemProps) => {
+  const [searchParams, setSearchParams] = useSearchParams();
   const { setMovieDetail } = useActions();
   const { setLightbox, handleLightboxMovieActions } =
     useContext<ILightboxContext>(LightboxContext);
 
-  const handleClick = () => setMovieDetail(movieItem);
+  const handleClick = () =>
+    setMovieDetail(movieItem, searchParams, setSearchParams);
 
   const handleSelectedDropdownItem = useCallback(
     (dropDownItem: IDropDownItem) => {

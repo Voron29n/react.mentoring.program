@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { createRoot } from 'react-dom/client';
-import { App } from './App';
 import '@fontsource/montserrat';
-import { Providers } from 'components';
+import { App } from './App';
+import { Providers } from './Providers';
 
 require('normalize-css');
 const root = createRoot(document.getElementById('root') as HTMLElement);
