@@ -4,7 +4,7 @@ import './style.scss';
 
 export const FilterBar = () => (
   <div className='filter__bar'>
-    <div className='filter__bar__container'>
+    <div className='container'>
       <GenreBar />
       <SortBar />
     </div>

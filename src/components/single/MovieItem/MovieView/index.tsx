@@ -20,11 +20,13 @@ export const MovieView = ({
 }: IMovieItemProps) => {
   const [isBarOpen, setIsBarOpen] = useState(true);
   const { movieDetail } = useTypedSelector(state => state.movieDetail);
-
   const refContainer = useRef<HTMLDivElement>(null);
   const isHovering = useHovering(refContainer);
 
-  const handleActionClick = () => setIsBarOpen(true);
+  const handleActionClick = () => {
+    setIsBarOpen(true);
+  };
+
   const handleSelectedAction = useCallback(
     (dropDownItem: IDropDownItem) => {
       handleSelectedDropdownItem(dropDownItem);
@@ -44,16 +46,14 @@ export const MovieView = ({
 
   const { id, title, genres, releaseDate, posterPath } = movieItem;
   const genreText = genres?.join(', ');
-
+  let containerClassName = '';
+  if (!!movieDetail) {
+    containerClassName =
+      id === movieDetail.id ? 'select__item' : 'opacity__item';
+  }
   return (
     <div
-      className={`movie__item__container ${
-        id === movieDetail?.id
-          ? 'select__item'
-          : !!movieDetail
-          ? 'opacity__item'
-          : ''
-      }`}
+      className={`movie__item__container ${containerClassName}`}
       ref={refContainer}
     >
       <div className='item' onClick={handleClick}>

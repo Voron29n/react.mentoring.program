@@ -23,13 +23,14 @@ export * from './single/GenreBar';
 export * from './single/GenreBar/GenreBarItem';
 export * from './single/GenreCheckmarks';
 export * from './single/MovieDetail';
-export * from './single/MovieItem/MovieItemView';
+export * from './single/MovieItem/MovieView';
 export * from './single/MovieItem';
 export * from './single/MovieInput';
 export * from './single/MovieInput/MovieInputView/index';
 export * from './single/SearchBar';
 export * from './single/SortBar';
 export * from './single/Spinner';
+export * from './single/Redirect';
 
 export * from './error/ErrorBoundary';
 export * from './error/FetchErrorMessage';

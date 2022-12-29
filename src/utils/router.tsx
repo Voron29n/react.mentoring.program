@@ -1,23 +1,9 @@
-import React, { useEffect } from 'react';
-import { createBrowserRouter, useNavigate } from 'react-router-dom';
-import { SearchMovie, UnknownPage } from 'components';
-
-interface IRedirectProps {
-  redirectPath: string;
-}
+import React from 'react';
+import { createBrowserRouter } from 'react-router-dom';
+import { Redirect, SearchMovie, UnknownPage } from 'components';
 
 export type SearchParams = {
   searchQuery: string;
-};
-
-const Redirect = ({ redirectPath }: IRedirectProps) => {
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    navigate(redirectPath);
-  }, []);
-
-  return <div>Redirected</div>;
 };
 
 export const router = createBrowserRouter([

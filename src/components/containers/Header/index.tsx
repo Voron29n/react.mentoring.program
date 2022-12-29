@@ -1,15 +1,16 @@
-import React, { memo, useCallback, useContext, useEffect } from 'react';
+import React, { memo, useCallback, useEffect } from 'react';
 import { IoSearchOutline } from 'react-icons/io5';
 import { useSearchParams } from 'react-router-dom';
 import { Button, Logo, Movie, MovieDetail, SearchBar } from 'components';
-import { ILightboxContext, LightboxContext, MovieActionTypes } from 'context';
+import { lightboxActions } from 'context';
 import {
   MovieQueryTypeActions,
   useActions,
+  useLightboxContext,
   useMovieService,
   useTypedSelector
 } from 'hooks';
-import { ADD_MOVE_BUTTON, baseApiConfig } from 'utils';
+import { ADD_MOVE_BUTTON, baseApiConfig, SEARCH_COMPONENT } from 'utils';
 import bitmap from 'images/bitmap.png';
 import './style.scss';
 
@@ -20,8 +21,7 @@ const HeaderStyle = {
 export const HeaderComponent = () => {
   const { movieDetail } = useTypedSelector(state => state.movieDetail);
   const { deleteMovieDetail, setMovieDetail } = useActions();
-  const { handleLightboxMovieActions, setLightbox } =
-    useContext<ILightboxContext>(LightboxContext);
+  const { dispatch } = useLightboxContext();
   const [searchParams, setSearchParams] = useSearchParams();
   const { handleConfirm } = useMovieService({
     defaultMovie: {} as Movie,
@@ -39,12 +39,8 @@ export const HeaderComponent = () => {
   }, []);
 
   const handleAddMovieClick = useCallback(
-    () =>
-      handleLightboxMovieActions({
-        action: MovieActionTypes.ADD,
-        setLightbox
-      }),
-    [setLightbox]
+    () => dispatch(lightboxActions.addMovie()),
+    [dispatch]
   );
 
   const handleSearchDetailClick = useCallback(() => {
@@ -69,7 +65,7 @@ export const HeaderComponent = () => {
       ) : (
         <>
           <Button onClick={handleAddMovieClick} {...ADD_MOVE_BUTTON} />
-          <SearchBar />
+          <SearchBar {...SEARCH_COMPONENT} />
         </>
       )}
     </header>

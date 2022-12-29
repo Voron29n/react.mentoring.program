@@ -1,8 +1,7 @@
-import React, { memo, useCallback, useMemo, useState } from 'react';
-import { InputAdornment, TextField } from '@mui/material';
+import React, { memo, useCallback, useState } from 'react';
 import { useFormikContext } from 'formik';
-import { GenreCheckmarks, Movie, MovieInputView, MovieKey } from 'components';
-import { GENRE_LIST, mapRuntimeToString } from 'utils';
+import { Movie, MovieInputView, MovieKey } from 'components';
+import { initComponentUtil } from 'components/single/MovieInput/utils';
 
 interface IMovieInput {
   label: string;
@@ -21,97 +20,33 @@ const MovieInputMemo = ({
   const { values, setValues, getFieldMeta, handleChange } =
     useFormikContext<Movie>();
 
-  const handleFocusRuntime = () => {
+  const handleFocusRuntime: () => void = () => {
     setIsRuntimeFocus(true);
   };
-  const handleBlurRuntime = () => {
+  const handleBlurRuntime: () => void = () => {
     setIsRuntimeFocus(false);
   };
-  const handleGenresChange = useCallback(
+  const handleGenresChange: (genres: string[]) => void = useCallback(
     (genres: string[]) => {
       setValues((oldValue: Movie) => ({ ...oldValue, genres }), true);
     },
     [setValues]
   );
 
-  const inputComponent = useMemo(() => {
-    const meta = getFieldMeta(keyName);
-    const commonProps = {
-      name: keyName,
-      id: keyName,
-      placeholder
-    };
-
-    switch (keyName) {
-      case MovieKey.GENRE:
-        if (!Array.isArray(values[keyName])) {
-          return null;
-        }
-        return (
-          <GenreCheckmarks
-            meta={meta}
-            value={values.genres}
-            onChange={handleGenresChange}
-            genreList={GENRE_LIST}
-            {...commonProps}
-          />
-        );
-      case MovieKey.RUNTIME:
-        return (
-          <TextField
-            onFocus={handleFocusRuntime}
-            onBlur={handleBlurRuntime}
-            onChange={handleChange}
-            error={Boolean(meta.error)}
-            helperText={meta.error}
-            value={
-              isRuntimeFocus
-                ? values[keyName]
-                : mapRuntimeToString(values[keyName])
-            }
-            type={isRuntimeFocus ? 'number' : 'text'}
-            InputProps={
-              isRuntimeFocus
-                ? {
-                    endAdornment: (
-                      <InputAdornment position='start'>min</InputAdornment>
-                    )
-                  }
-                : null
-            }
-            {...commonProps}
-          />
-        );
-      default:
-        const type =
-          keyName === MovieKey.DATE
-            ? 'date'
-            : keyName === MovieKey.RATING
-            ? 'number'
-            : 'text';
-
-        return (
-          <TextField
-            multiline={keyName === MovieKey.OVERVIEW}
-            rows={keyName === MovieKey.OVERVIEW ? 7 : 1}
-            type={type}
-            onChange={handleChange}
-            error={Boolean(meta.error)}
-            helperText={meta.error}
-            value={values[keyName]}
-            {...commonProps}
-          />
-        );
-    }
-  }, [
+  const inputComponentFunction = initComponentUtil(
     getFieldMeta,
-    handleChange,
     handleGenresChange,
-    isRuntimeFocus,
+    handleFocusRuntime,
+    handleBlurRuntime,
+    handleChange
+  );
+
+  const inputComponent = inputComponentFunction(
     keyName,
     placeholder,
-    values
-  ]);
+    values,
+    isRuntimeFocus
+  );
 
   return (
     <>

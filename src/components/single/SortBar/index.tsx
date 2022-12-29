@@ -35,7 +35,7 @@ const SortBarComponent = () => {
           <div className='active__item'>{activeSortType.label}</div>
           <img
             className={`select__img ${isSelectBarOpen ? 'img__flip' : ''}`}
-            alt={isSelectBarOpen ? 'close' : 'open'}
+            alt={isSelectBarOpen ? 'open' : 'close'}
             src={sortBarImg}
           />
         </div>

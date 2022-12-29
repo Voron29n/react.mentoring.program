@@ -1,6 +1,7 @@
 import { useActions } from './useActions';
 import { useActiveSearchParams } from './useActiveSearchParams';
 import { useHovering } from './useHovering';
+import { useLightboxContext } from './useLightboxContext';
 import { useMovieService } from './useMovieService';
 import { MovieQueryTypeActions, useQueryMovie } from './useQueryMovie';
 import { useQueryMovieList } from './useQueryMovieList';
@@ -16,5 +17,6 @@ export {
   useQueryMovie,
   useMovieService,
   useActiveSearchParams,
+  useLightboxContext,
   MovieQueryTypeActions
 };

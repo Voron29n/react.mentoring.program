@@ -55,6 +55,11 @@ export const GenreCheckmarks = ({
     [onChange]
   );
 
+  const renderValue = useCallback(
+    (selected: Array<string>) => selected.join(', '),
+    []
+  );
+
   return (
     <FormControl
       error={Boolean(meta.error)}
@@ -66,7 +71,7 @@ export const GenreCheckmarks = ({
         multiple
         value={genreName}
         onChange={handleChange}
-        renderValue={selected => selected.join(', ')}
+        renderValue={renderValue}
         MenuProps={MenuProps}
       >
         {genreList.map(name => (

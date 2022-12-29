@@ -28,15 +28,6 @@ export type SearchMoviesActions =
   | SetActiveGenreAction
   | SetActiveSortTypeAction;
 
-export const setSearchText = (searchText: string) => {
-  return (dispatch: Dispatch<SearchMoviesActions>) => {
-    dispatch({
-      type: SearchMoviesActionTypes.SET_SEARCH_TEXT,
-      payload: searchText
-    });
-  };
-};
-
 const searchParamsActions = (
   searchName: string,
   activeParam: IDropDownItem,
@@ -50,6 +41,15 @@ const searchParamsActions = (
     searchParams.delete(searchName);
     setSearchParams(searchParams);
   }
+};
+
+export const setSearchText = (searchText: string) => {
+  return (dispatch: Dispatch<SearchMoviesActions>) => {
+    dispatch({
+      type: SearchMoviesActionTypes.SET_SEARCH_TEXT,
+      payload: searchText
+    });
+  };
 };
 
 export const setActiveGenre = (

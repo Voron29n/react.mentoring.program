@@ -1,4 +1,4 @@
-import React, { useCallback, useContext } from 'react';
+import React, { useCallback } from 'react';
 import {
   Confirm,
   Congratulations,
@@ -7,8 +7,13 @@ import {
   Movie,
   Spinner
 } from 'components';
-import { LightboxContext } from 'context';
-import { MovieQueryTypeActions, useActions, useMovieService } from 'hooks';
+import { lightboxActions } from 'context';
+import {
+  MovieQueryTypeActions,
+  useActions,
+  useLightboxContext,
+  useMovieService
+} from 'hooks';
 import { CONFIRM_COMPONENT, CONGRATULATIONS_DELETE_MOVIE } from 'utils';
 
 interface IDeleteMovieProps {
@@ -17,16 +22,13 @@ interface IDeleteMovieProps {
 
 export const DeleteMovie = ({ deletedMovie }: IDeleteMovieProps) => {
   const { deleteMovie } = useActions();
-  const { setLightbox } = useContext(LightboxContext);
+  const { dispatch } = useLightboxContext();
   const { isError, isLoading, isSuccess, isConfirmed, handleConfirm } =
     useMovieService({
       defaultMovie: deletedMovie,
       movieAction: deleteMovie,
       successCallback: () => {
-        setLightbox(oldLightbox => ({
-          ...oldLightbox,
-          lightboxSize: LightboxSize.SMALL
-        }));
+        dispatch(lightboxActions.changeLightboxSize(LightboxSize.SMALL));
       },
       movieQueryTypeActions: MovieQueryTypeActions.DELETE
     });

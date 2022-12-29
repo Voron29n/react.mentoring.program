@@ -1,8 +1,8 @@
-import React, { memo, useCallback, useContext } from 'react';
+import React, { memo, useCallback } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { IDropDownItem, MovieView } from 'components';
-import { ILightboxContext, LightboxContext, MovieActionTypes } from 'context';
-import { useActions } from 'hooks';
+import { lightboxActions, LightboxActionTypes } from 'context';
+import { useActions, useLightboxContext } from 'hooks';
 
 export type Movie = {
   id: number;
@@ -35,21 +35,22 @@ interface IMovieItemProps {
 const MovieItemMemo = ({ movieItem }: IMovieItemProps) => {
   const [searchParams, setSearchParams] = useSearchParams();
   const { setMovieDetail } = useActions();
-  const { setLightbox, handleLightboxMovieActions } =
-    useContext<ILightboxContext>(LightboxContext);
+  const { dispatch } = useLightboxContext();
 
-  const handleClick = () =>
-    setMovieDetail(movieItem, searchParams, setSearchParams);
+  const handleClick = useCallback(
+    () => setMovieDetail(movieItem, searchParams, setSearchParams),
+    [movieItem, searchParams, setSearchParams]
+  );
 
   const handleSelectedDropdownItem = useCallback(
     (dropDownItem: IDropDownItem) => {
-      handleLightboxMovieActions({
-        action: dropDownItem.value as MovieActionTypes,
-        movie: movieItem,
-        setLightbox
-      });
+      if (dropDownItem.value === LightboxActionTypes.EDIT_MOVIE_FORM) {
+        dispatch(lightboxActions.editMovie(movieItem));
+      } else if (dropDownItem.value === LightboxActionTypes.DELETE_MOVIE) {
+        dispatch(lightboxActions.deleteMovie(movieItem));
+      }
     },
-    [movieItem]
+    [dispatch, movieItem]
   );
 
   return (

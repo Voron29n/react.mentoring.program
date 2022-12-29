@@ -49,8 +49,3 @@ export function transformMovieMap<T extends Movie | ServerMovie>(
         poster_path: rest.posterPath
       } as T);
 }
-
-export const getMovieResponse = async (data: Response): Promise<Movie> => {
-  const json = await data.json();
-  return transformMovieMap<Movie>(json);
-};

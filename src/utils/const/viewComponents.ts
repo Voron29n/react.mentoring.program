@@ -56,10 +56,10 @@ export const SORT_BAR = {
 export const MOVIE_ACTION = [
   {
     label: 'edit',
-    value: 'EDIT'
+    value: 'EDIT_MOVIE_FORM'
   },
   {
     label: 'delete',
-    value: 'DELETE'
+    value: 'DELETE_MOVIE'
   }
 ] as Array<IDropDownItem>;

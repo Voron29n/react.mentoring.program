@@ -40,7 +40,7 @@ export const generateMoviesUrl = (
   activeGenre: string,
   activeSortType: string,
   searchQuery: string
-): string => {
+): URL => {
   const url = new URL(
     `${baseApiConfig._apiBase}movies?limit=${baseApiConfig._baseLimit}&offset=${baseApiConfig._baseOffset}`
   );
@@ -64,5 +64,5 @@ export const generateMoviesUrl = (
       SearchBy.TITLE
     );
   }
-  return url.toString();
+  return url;
 };

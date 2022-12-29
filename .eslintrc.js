@@ -5,14 +5,7 @@ module.exports = {
     project: './tsconfig.json'
   },
   ignorePatterns: ['.eslintrc.js'],
-  plugins: [
-    '@typescript-eslint',
-    'eslint-plugin-node',
-    'react-hooks',
-    'prettier',
-    'react',
-    'import'
-  ],
+  plugins: ['@typescript-eslint', 'eslint-plugin-node', 'react-hooks', 'prettier', 'react', 'import'],
   extends: [
     'airbnb-typescript',
     'prettier',

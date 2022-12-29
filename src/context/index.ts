@@ -1,13 +1,15 @@
 import {
-  handleLightboxMovieActions,
   ILightboxContext,
+  lightboxActions,
+  LightboxActionTypes,
   LightboxContext,
-  MovieActionTypes
+  lightboxMovieReducer
 } from './lightbox';
 
 export {
   LightboxContext,
   ILightboxContext,
-  handleLightboxMovieActions,
-  MovieActionTypes
+  lightboxMovieReducer,
+  LightboxActionTypes,
+  lightboxActions
 };

@@ -8,7 +8,12 @@ interface IButtonProps {
   onClick: (e: any) => void;
 }
 
-const ButtonMemo = ({ text, type, classNames, onClick }: IButtonProps) => {
+const ButtonMemo = ({
+  text,
+  type = 'button',
+  classNames,
+  onClick
+}: IButtonProps) => {
   let classNameAtr = ['common__button'] as Array<string>;
   if (classNames) {
     classNameAtr = [...classNameAtr, ...classNames];

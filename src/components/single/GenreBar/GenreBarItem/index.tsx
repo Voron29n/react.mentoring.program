@@ -11,7 +11,7 @@ interface IGenreItemProps {
 const GenreBarItemComponent = forwardRef(
   (
     { genreBarItem, isActive, onClick }: IGenreItemProps,
-    ref: ForwardedRef<any>
+    ref: ForwardedRef<HTMLLIElement>
   ) => (
     <li
       ref={isActive ? ref : null}

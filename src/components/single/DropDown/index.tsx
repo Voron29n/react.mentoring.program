@@ -28,13 +28,15 @@ export const DropDown = ({
           <IoClose onClick={handleCloseIcon} />
         </div>
       )}
-      {selectList.map(selectItem => (
-        <DropDownItem
-          key={selectItem.label}
-          value={selectItem}
-          onClick={handleItemClick}
-        />
-      ))}
+      <ul>
+        {selectList.map(selectItem => (
+          <DropDownItem
+            key={selectItem.label}
+            value={selectItem}
+            onClick={handleItemClick}
+          />
+        ))}
+      </ul>
     </div>
   );
 };

@@ -47,7 +47,7 @@ export const fetchMovieList = async (
     activeSortType,
     searchQuery
   );
-  const res = await fetchReq({ url: movieListUrl });
+  const res = await fetchReq({ url: movieListUrl.toString() });
   const json = await res.json();
 
   const movieList = await json.data

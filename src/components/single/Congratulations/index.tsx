@@ -7,16 +7,14 @@ interface ICongratulationsProps {
   text: string;
 }
 
-const CongratulationsMemo = ({ headline, text }: ICongratulationsProps) => {
-  return (
-    <div className='congratulations__container'>
-      <div className='congratulations_icon'>
-        <img src={congratulationsIcon} alt={headline} />
-      </div>
-      <div className='headline upper__text'>{headline}</div>
-      <div className='text'>{text}</div>
+const CongratulationsMemo = ({ headline, text }: ICongratulationsProps) => (
+  <div className='congratulations__container'>
+    <div className='congratulations_icon'>
+      <img src={congratulationsIcon} alt={headline} />
     </div>
-  );
-};
+    <div className='headline upper__text'>{headline}</div>
+    <div className='text'>{text}</div>
+  </div>
+);
 
 export const Congratulations = memo(CongratulationsMemo);

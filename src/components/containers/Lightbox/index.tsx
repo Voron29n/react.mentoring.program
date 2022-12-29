@@ -1,6 +1,7 @@
-import React, { useContext } from 'react';
+import React, { useCallback } from 'react';
 import { IoClose } from 'react-icons/io5';
-import { ILightboxContext, LightboxContext } from 'context';
+import { lightboxActions } from 'context/lightbox';
+import { useLightboxContext } from 'hooks';
 import './style.scss';
 
 enum LightboxSize {
@@ -14,10 +15,10 @@ interface ILightboxProps {
 }
 
 const Lightbox = ({ lightboxSize, children }: ILightboxProps) => {
-  const { setLightbox } = useContext<ILightboxContext>(LightboxContext);
-  const closeLightbox = () => {
-    setLightbox(null);
-  };
+  const { dispatch } = useLightboxContext();
+  const closeLightbox = useCallback(() => {
+    dispatch(lightboxActions.closeLightbox());
+  }, [dispatch]);
 
   return (
     <div className='lightbox__container'>

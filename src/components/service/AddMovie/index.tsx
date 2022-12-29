@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import {
   Congratulations,
   FetchErrorMessage,
@@ -7,8 +7,13 @@ import {
   MovieForm,
   Spinner
 } from 'components';
-import { LightboxContext } from 'context';
-import { MovieQueryTypeActions, useActions, useMovieService } from 'hooks';
+import { lightboxActions } from 'context';
+import {
+  MovieQueryTypeActions,
+  useActions,
+  useLightboxContext,
+  useMovieService
+} from 'hooks';
 import { CONGRATULATIONS_ADD_MOVIE } from 'utils';
 
 const defaultMovie = {
@@ -24,16 +29,13 @@ const defaultMovie = {
 
 export const AddMovie = () => {
   const { addMovie } = useActions();
-  const { setLightbox } = useContext(LightboxContext);
+  const { dispatch } = useLightboxContext();
   const { isError, isLoading, isSuccess, isConfirmed, handleConfirm } =
     useMovieService({
       defaultMovie: defaultMovie,
       movieAction: addMovie,
       successCallback: () => {
-        setLightbox(oldLightbox => ({
-          ...oldLightbox,
-          lightboxSize: LightboxSize.SMALL
-        }));
+        dispatch(lightboxActions.changeLightboxSize(LightboxSize.SMALL));
       },
       movieQueryTypeActions: MovieQueryTypeActions.ADD
     });

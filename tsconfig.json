@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "types": ["cypress", "@testing-library/cypress"],
     "outDir": "./dist/",
     "sourceMap": true,
     "noImplicitAny": true,
@@ -22,6 +23,6 @@
       "utils/*": ["src/utils/*"]
     }
   },
-  "include": ["./src/**/*", "./config/**/*"],
+  "include": ["./src/**/*", "./config/**/*", "./cypress/**/*"],
   "exclude": ["node_modules"]
 }
