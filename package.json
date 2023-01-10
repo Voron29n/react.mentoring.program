@@ -9,7 +9,7 @@
     "start": "cross-env NODE_ENV=development webpack serve --config config/webpack.config.dev.js",
     "build": "cross-env NODE_ENV=production webpack --config config/webpack.config.prod.js",
     "test": "jest --config ./jest.config.ts",
-    "cypress": "cypress open",
+    "cypress": "cypress run",
     "precommit": "lint-staged",
     "postinstall": "husky install ./config/.husky",
     "predeploy": "yarn build",
