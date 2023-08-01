@@ -9,5 +9,17 @@
   "bracketSpacing": true,
   "arrowParens": "avoid",
   "requirePragma": false,
-  "proseWrap": "preserve"
+  "proseWrap": "preserve",
+  "importOrder": [
+    "^(react|redux)(.*)",
+    "<THIRD_PARTY_MODULES>",
+    "components(.*)",
+    "context(.*)",
+    "hooks(.*)",
+    "store(.*)",
+    "utils(.*)",
+    "images(.*)",
+    "^[./]"
+  ],
+  "importOrderSeparation": false
 }

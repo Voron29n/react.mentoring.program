@@ -1,4 +1,4 @@
-@import '~utils/style/_constant';
+@import '~utils/style/_constant.scss';
 
 $lineHeightLabel: 20px;
 $fontWeightLabel: 600;
@@ -21,10 +21,10 @@ $overviewInputHeight: 190px;
     color: $color1;
     margin-bottom: 13px;
     @include fontBase(
-      $fontWeightLabel,
-      $lineHeightLabel,
-      $fontSizeLabel,
-      $letterSpacingLabel
+                    $fontWeightLabel,
+                    $lineHeightLabel,
+                    $fontSizeLabel,
+                    $letterSpacingLabel
     );
   }
 

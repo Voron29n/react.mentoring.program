@@ -1,4 +1,4 @@
-@import '~utils/style/_constant';
+@import '~utils/style/_constant.scss';
 
 $lineHeight: 20px;
 $fontWeight: 400;
@@ -16,10 +16,10 @@ $fontWeightItem: 500;
   .label {
     color: $color5;
     @include fontBase(
-      $fontWeight,
-      $lineHeight,
-      $fontSize,
-      $letterSpacing
+                    $fontWeight,
+                    $lineHeight,
+                    $fontSize,
+                    $letterSpacing
     );
     text-transform: uppercase;
 
@@ -30,7 +30,7 @@ $fontWeightItem: 500;
   .active__item {
     width: 140px;
     color: $color5;
-    @include fontBase( $fontWeightItem, $lineHeight, $fontSize);
+    @include fontBase($fontWeightItem, $lineHeight, $fontSize);
   }
 
   .select {

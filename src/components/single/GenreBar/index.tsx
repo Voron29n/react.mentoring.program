@@ -1,36 +1,41 @@
-import React, { memo, useCallback, useMemo, useState } from 'react';
-import { GenreBarItem, IDropDownItem } from 'components';
-import { GENRE_BAR } from 'utils';
+import React, { memo, useMemo, useRef, useState } from 'react';
+import { GenreBarItem } from 'components';
+import { useActions, useActiveSearchParams, useTypedSelector } from 'hooks';
+import { baseApiConfig, GENRE_BAR } from 'utils';
 import './style.scss';
-import { useActions, useTypedSelector } from 'hooks';
 
 const GenreBarComponent = () => {
   const [activeLineStyle, setActiveLineStyle] = useState(null);
-  const { activeGenre } = useTypedSelector(state => state.filterBar);
+  const { activeGenre } = useTypedSelector(state => state.searchMovies);
   const { setActiveGenre } = useActions();
-
-  const handleClick = useCallback(
-    (target: HTMLElement, genreBarItem: IDropDownItem) => {
-      setActiveLineStyle({
-        width: target.offsetWidth,
-        marginLeft: target.offsetLeft
-      });
-      setActiveGenre(genreBarItem);
+  const refItem = useRef<HTMLLIElement>();
+  const { handleSelectedActive } = useActiveSearchParams(
+    () => {
+      if (refItem.current) {
+        setActiveLineStyle({
+          width: refItem.current.offsetWidth,
+          marginLeft: refItem.current.offsetLeft
+        });
+      }
     },
-    [setActiveGenre]
+    baseApiConfig._searchParams.genre,
+    GENRE_BAR,
+    activeGenre,
+    setActiveGenre
   );
 
   const genreList = useMemo(
     () =>
       GENRE_BAR.slice(0, 5).map(genreBarItem => (
         <GenreBarItem
+          ref={refItem}
           key={genreBarItem.value}
           genreBarItem={genreBarItem}
           isActive={genreBarItem.value === activeGenre?.value}
-          onClick={target => handleClick(target, genreBarItem)}
+          onClick={handleSelectedActive}
         />
       )),
-    [activeGenre, handleClick]
+    [activeGenre?.value, handleSelectedActive]
   );
 
   return (

@@ -1,6 +1,6 @@
 import React, { Dispatch, useCallback } from 'react';
-import { DropDownItem, IDropDownItem } from 'components';
 import { IoClose } from 'react-icons/io5';
+import { DropDownItem, IDropDownItem } from 'components';
 import './style.scss';
 
 interface IDropDownProps {
@@ -28,13 +28,15 @@ export const DropDown = ({
           <IoClose onClick={handleCloseIcon} />
         </div>
       )}
-      {selectList.map(selectItem => (
-        <DropDownItem
-          key={selectItem.label}
-          value={selectItem}
-          onClick={handleItemClick}
-        />
-      ))}
+      <ul>
+        {selectList.map(selectItem => (
+          <DropDownItem
+            key={selectItem.label}
+            value={selectItem}
+            onClick={handleItemClick}
+          />
+        ))}
+      </ul>
     </div>
   );
 };

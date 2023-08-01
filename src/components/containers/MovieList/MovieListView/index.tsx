@@ -4,19 +4,20 @@ import './style.scss';
 
 interface IMovieListViewProps {
   movieList: Array<Movie>;
-  error: string;
-  loading: boolean;
+  isError: boolean;
+  isLoading: boolean;
 }
 
 export const MovieListView = ({
   movieList,
-  error,
-  loading
+  isError,
+  isLoading
 }: IMovieListViewProps) => {
-  const errorMessage = error ? <FetchErrorMessage /> : null;
-  const spinner = loading ? <Spinner /> : null;
+  const classNames = `movie__view ${isLoading ? 'movie__loading' : ''}`;
+  const errorMessage = isError ? <FetchErrorMessage /> : null;
+  const spinner = isLoading ? <Spinner /> : null;
   const content =
-    error || loading ? null : (
+    isError || isLoading ? null : (
       <>
         <div className='movie__count'>
           <span>{movieList?.length}</span>movies found
@@ -29,7 +30,5 @@ export const MovieListView = ({
       </>
     );
 
-  return (
-    <div className='movie__view'>{spinner || errorMessage || content}</div>
-  );
+  return <div className={classNames}>{spinner || errorMessage || content}</div>;
 };

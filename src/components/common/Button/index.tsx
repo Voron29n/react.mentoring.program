@@ -3,20 +3,26 @@ import './style.scss';
 
 interface IButtonProps {
   text: string;
+  type?: 'submit' | 'reset' | 'button';
   classNames?: Array<string>;
-  onClick: () => void;
+  onClick: (e: any) => void;
 }
 
-const ButtonComponent = ({ text, classNames, onClick }: IButtonProps) => {
+const ButtonMemo = ({
+  text,
+  type = 'button',
+  classNames,
+  onClick
+}: IButtonProps) => {
   let classNameAtr = ['common__button'] as Array<string>;
   if (classNames) {
     classNameAtr = [...classNameAtr, ...classNames];
   }
   return (
-    <button onClick={onClick} className={classNameAtr.join(' ')}>
+    <button onClick={onClick} className={classNameAtr.join(' ')} type={type}>
       {text}
     </button>
   );
 };
 
-export const Button = memo(ButtonComponent);
+export const Button = memo(ButtonMemo);

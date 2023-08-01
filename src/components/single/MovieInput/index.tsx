@@ -1,80 +1,52 @@
-import React, {
-  Dispatch,
-  memo,
-  SetStateAction,
-  useCallback,
-  useMemo,
-  useState
-} from 'react';
+import React, { memo, useCallback, useState } from 'react';
+import { useFormikContext } from 'formik';
 import { Movie, MovieInputView, MovieKey } from 'components';
-import {
-  getInputValueOrDefault,
-  prepareGenreField,
-  prepareRuntimeField,
-  prepareTextField
-} from './utils';
+import { initComponentUtil } from 'components/single/MovieInput/utils';
 
 interface IMovieInput {
   label: string;
   placeholder: string;
   keyName: MovieKey;
   customClasses: Array<string>;
-  keyValue: string | number | Array<string>;
-  setMovieItem: Dispatch<SetStateAction<Movie>>;
 }
 
-const MovieInputComponent = ({
+const MovieInputMemo = ({
   label,
   placeholder,
   customClasses,
-  keyName,
-  keyValue,
-  setMovieItem
+  keyName
 }: IMovieInput) => {
   const [isRuntimeFocus, setIsRuntimeFocus] = useState(false);
+  const { values, setValues, getFieldMeta, handleChange } =
+    useFormikContext<Movie>();
 
-  const onMovieInputChange = useCallback(
-    (value: string | number | Array<string>) => {
-      setMovieItem((prevMovieItem: Movie) => {
-        const editMovieItem = { ...prevMovieItem };
-        editMovieItem[keyName as keyof Movie] = value;
-        return editMovieItem;
-      });
+  const handleFocusRuntime: () => void = () => {
+    setIsRuntimeFocus(true);
+  };
+  const handleBlurRuntime: () => void = () => {
+    setIsRuntimeFocus(false);
+  };
+  const handleGenresChange: (genres: string[]) => void = useCallback(
+    (genres: string[]) => {
+      setValues((oldValue: Movie) => ({ ...oldValue, genres }), true);
     },
-    [keyName, setMovieItem]
+    [setValues]
   );
 
-  const inputComponent = useMemo(() => {
-    const inputValue = getInputValueOrDefault(keyName, keyValue);
-    const commonProps = {
-      id: keyName,
-      placeholder
-    };
+  const inputComponentFunction = initComponentUtil(
+    getFieldMeta,
+    handleGenresChange,
+    handleFocusRuntime,
+    handleBlurRuntime,
+    handleChange
+  );
 
-    switch (keyName) {
-      case MovieKey.GENRE:
-        return Array.isArray(inputValue)
-          ? prepareGenreField(inputValue, onMovieInputChange, commonProps)
-          : null;
-      case MovieKey.RUNTIME:
-        return !Array.isArray(inputValue)
-          ? prepareRuntimeField(
-              isRuntimeFocus,
-              inputValue,
-              onMovieInputChange,
-              setIsRuntimeFocus,
-              commonProps
-            )
-          : null;
-      default:
-        return prepareTextField(
-          keyName,
-          inputValue,
-          onMovieInputChange,
-          commonProps
-        );
-    }
-  }, [keyName, keyValue, placeholder, isRuntimeFocus, onMovieInputChange]);
+  const inputComponent = inputComponentFunction(
+    keyName,
+    placeholder,
+    values,
+    isRuntimeFocus
+  );
 
   return (
     <>
@@ -85,4 +57,4 @@ const MovieInputComponent = ({
   );
 };
 
-export const MovieInput = memo(MovieInputComponent);
+export const MovieInput = memo(MovieInputMemo);

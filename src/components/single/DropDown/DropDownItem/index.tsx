@@ -12,9 +12,9 @@ interface IDropDownItemProps {
 }
 
 const DropDownItemComponent = ({ value, onClick }: IDropDownItemProps) => (
-  <div className='drop__down__item upper__text' onClick={() => onClick(value)}>
+  <li className='drop__down__item upper__text' onClick={() => onClick(value)}>
     {value.label}
-  </div>
+  </li>
 );
 
 export const DropDownItem = memo(DropDownItemComponent);

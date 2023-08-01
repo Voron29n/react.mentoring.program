@@ -1,4 +1,5 @@
-import { MovieInputSize, MovieKey } from 'components';
+import { MovieInputSize } from 'components/single/MovieInput/MovieInputView';
+import { MovieKey } from 'components/single/MovieItem';
 
 export interface IMovieFormConst {
   label: string;

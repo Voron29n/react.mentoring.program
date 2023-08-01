@@ -1,0 +1,412 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MovieListView component MovieListView snapshot 1`] = `
+{
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <div
+        class="movie__view "
+      >
+        <div
+          class="movie__count"
+        >
+          <span>
+            2
+          </span>
+          movies found
+        </div>
+        <div
+          class="movie__list"
+        >
+          <div
+            class="movie__item__container "
+          >
+            <div
+              class="item"
+            >
+              <img
+                alt="testTitle"
+                class="poster"
+                src="testPosterPath"
+              />
+              <div
+                class="info"
+              >
+                <div>
+                  testTitle
+                </div>
+                <div
+                  class="release"
+                >
+                  2018
+                </div>
+              </div>
+              <div
+                class="genre"
+              >
+                testGenre1, testGenre2
+              </div>
+            </div>
+          </div>
+          <div
+            class="movie__item__container "
+          >
+            <div
+              class="item"
+            >
+              <img
+                alt="testTitle 1"
+                class="poster"
+                src="testPosterPath"
+              />
+              <div
+                class="info"
+              >
+                <div>
+                  testTitle 1
+                </div>
+                <div
+                  class="release"
+                >
+                  2018
+                </div>
+              </div>
+              <div
+                class="genre"
+              >
+                testGenre1, testGenre2
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>,
+  "container": <div>
+    <div
+      class="movie__view "
+    >
+      <div
+        class="movie__count"
+      >
+        <span>
+          2
+        </span>
+        movies found
+      </div>
+      <div
+        class="movie__list"
+      >
+        <div
+          class="movie__item__container "
+        >
+          <div
+            class="item"
+          >
+            <img
+              alt="testTitle"
+              class="poster"
+              src="testPosterPath"
+            />
+            <div
+              class="info"
+            >
+              <div>
+                testTitle
+              </div>
+              <div
+                class="release"
+              >
+                2018
+              </div>
+            </div>
+            <div
+              class="genre"
+            >
+              testGenre1, testGenre2
+            </div>
+          </div>
+        </div>
+        <div
+          class="movie__item__container "
+        >
+          <div
+            class="item"
+          >
+            <img
+              alt="testTitle 1"
+              class="poster"
+              src="testPosterPath"
+            />
+            <div
+              class="info"
+            >
+              <div>
+                testTitle 1
+              </div>
+              <div
+                class="release"
+              >
+                2018
+              </div>
+            </div>
+            <div
+              class="genre"
+            >
+              testGenre1, testGenre2
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;
+
+exports[`MovieListView component with error MovieListView snapshot 1`] = `
+{
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <div
+        class="movie__view "
+      >
+        <div
+          style="display: flex; justify-content: center; align-items: center;"
+        >
+          <iframe
+            allowfullscreen=""
+            class="giphy-embed"
+            frameborder="0"
+            src="https://giphy.com/embed/8L0Pky6C83SzkzU55a"
+          />
+        </div>
+      </div>
+    </div>
+  </body>,
+  "container": <div>
+    <div
+      class="movie__view "
+    >
+      <div
+        style="display: flex; justify-content: center; align-items: center;"
+      >
+        <iframe
+          allowfullscreen=""
+          class="giphy-embed"
+          frameborder="0"
+          src="https://giphy.com/embed/8L0Pky6C83SzkzU55a"
+        />
+      </div>
+    </div>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;
+
+exports[`MovieListView component with loading MovieListView snapshot 1`] = `
+{
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <div
+        class="movie__view movie__loading"
+      >
+        <div
+          class="spinner-box"
+        >
+          <svg
+            class="spinner"
+            viewBox="0 0 50 50"
+          >
+            <circle
+              class="path"
+              cx="25"
+              cy="25"
+              fill="none"
+              r="20"
+              stroke-width="5"
+            />
+          </svg>
+        </div>
+      </div>
+    </div>
+  </body>,
+  "container": <div>
+    <div
+      class="movie__view movie__loading"
+    >
+      <div
+        class="spinner-box"
+      >
+        <svg
+          class="spinner"
+          viewBox="0 0 50 50"
+        >
+          <circle
+            class="path"
+            cx="25"
+            cy="25"
+            fill="none"
+            r="20"
+            stroke-width="5"
+          />
+        </svg>
+      </div>
+    </div>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;

@@ -1,21 +1,39 @@
 import React, { useEffect } from 'react';
-import { MovieListView } from 'components';
-import { useActions, useTypedSelector } from 'hooks';
+import { UseQueryResult } from '@tanstack/react-query';
+import { Movie, MovieListView } from 'components';
+import { useActions, useQueryMovieList, useTypedSelector } from 'hooks';
 
 export const MovieList = () => {
-  const { movieList, error, loading } = useTypedSelector(
+  const { movieList: storeMovieList } = useTypedSelector(
     state => state.movieList
   );
-  const { activeGenre, activeSortType } = useTypedSelector(
-    state => state.filterBar
+  const { activeGenre, activeSortType, searchQuery } = useTypedSelector(
+    state => state.searchMovies
   );
-  const { fetchMovies } = useActions();
+  const { saveMovieList } = useActions();
+
+  const {
+    isSuccess,
+    isError,
+    isLoading,
+    data: queryMovieList
+  }: UseQueryResult<Array<Movie>> = useQueryMovieList(
+    activeGenre.value,
+    activeSortType.value,
+    searchQuery
+  );
 
   useEffect(() => {
-    fetchMovies(activeGenre, activeSortType);
-  }, [activeGenre, activeSortType]);
+    if (isSuccess) {
+      saveMovieList(queryMovieList);
+    }
+  }, [isSuccess]);
 
   return (
-    <MovieListView movieList={movieList} error={error} loading={loading} />
+    <MovieListView
+      movieList={storeMovieList}
+      isError={isError}
+      isLoading={isLoading}
+    />
   );
 };

@@ -28,7 +28,9 @@ const MovieDetailComponent = ({ movieDetail }: IMovieItemProps) => {
       <div className='info'>
         <div className='main__data'>
           <div className='title'>{title}</div>
-          <div className='rating'>{voteAverage}</div>
+          <div className='rating__container'>
+            <div className='rating'>{voteAverage}</div>
+          </div>
         </div>
         <div className='genre'>{genreText}</div>
         <div className='time__data'>

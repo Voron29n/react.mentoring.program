@@ -1,4 +1,4 @@
-@import '~utils/style/_constant';
+@import '~utils/style/_constant.scss';
 
 .filter__bar {
   display: flex;
@@ -10,7 +10,7 @@
   padding: 0 $containerLRPadding;
   background: $color3;
 
-  .filter__bar__container {
+  .container {
     position: relative;
     width: inherit;
     padding: 0 0 25px 0;

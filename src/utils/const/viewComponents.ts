@@ -1,6 +1,7 @@
 import { IDropDownItem } from 'components/single/DropDown/DropDownItem';
 
 export const SEARCH_COMPONENT = {
+  name: 'searchQuery',
   headline: 'find you movie',
   placeholder: 'What do you want to watch?',
   button: {
@@ -34,6 +35,10 @@ export const SORT_BAR = {
   labelText: 'sort by',
   list: [
     {
+      label: 'No sort',
+      value: ''
+    },
+    {
       label: 'release date',
       value: 'release_date'
     },
@@ -51,10 +56,10 @@ export const SORT_BAR = {
 export const MOVIE_ACTION = [
   {
     label: 'edit',
-    value: 'edit'
+    value: 'EDIT_MOVIE_FORM'
   },
   {
     label: 'delete',
-    value: 'delete'
+    value: 'DELETE_MOVIE'
   }
 ] as Array<IDropDownItem>;

@@ -10,5 +10,5 @@ export const mapRuntimeToString = (runtimeValue: number | string): string => {
   const hoursStr = hours > 0 ? `${hours}h` : '';
   const minutesStr = minutes > 0 ? `${minutes}min` : '';
 
-  return `${hoursStr} ${minutesStr}`;
+  return `${hoursStr} ${minutesStr}`.trim();
 };

@@ -1,34 +1,19 @@
 import React from 'react';
-import {
-  ErrorBoundary,
-  FilterBar,
-  Footer,
-  Header,
-  Lightbox,
-  MovieList
-} from 'components';
-import { useTypedSelector } from 'hooks';
-import { AdapterMoment } from '@mui/x-date-pickers/AdapterMoment';
-import { LocalizationProvider } from '@mui/x-date-pickers';
+import { RouterProvider } from 'react-router-dom';
+import { Lightbox } from 'components';
+import { useLightboxContext } from 'hooks';
+import { router } from 'utils/router';
 import './style.scss';
 
-const App = () => {
-  const { lightbox, isLightboxOpen } = useTypedSelector(
-    state => state.lightbox
-  );
+export const App = () => {
+  const {
+    state: { lightbox }
+  } = useLightboxContext();
 
   return (
     <>
-      <LocalizationProvider dateAdapter={AdapterMoment}>
-        <Header />
-        <ErrorBoundary>
-          <FilterBar />
-          <MovieList />
-        </ErrorBoundary>
-        <Footer />
-        {isLightboxOpen && lightbox && <Lightbox {...lightbox} />}
-      </LocalizationProvider>
+      <RouterProvider router={router} />
+      {!!lightbox && <Lightbox {...lightbox} />}
     </>
   );
 };
-export default App;
